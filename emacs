@@ -1,4 +1,5 @@
-(package-initialize)
+;; packages
+(setq package-list '(reftex auto-complete nlinum org-ref ob-ipython elfeed))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -7,6 +8,18 @@
    'package-archives
    '("melpa" . "https://melpa.milkbox.net/packages/")
    t))
+
+;; activate packages
+(package-initialize)
+
+;; fetch the list of available packages 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; install packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; add custom packages which are not part of melpa
 ;; ox-rss
