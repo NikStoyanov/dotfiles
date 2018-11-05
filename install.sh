@@ -43,7 +43,7 @@ if [ ! -d "$HOME/.emacs.d/lisp/" ]; then
         mkdir "$HOME/.emacs.d/lisp/"
 fi
 
-cp "$dotfiles/emacs" "$HOME/.emacs.d/config.el"
+cp "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
 cp "$dotfiles/lisp/ox-rss.el" "$HOME/.emacs.d/lisp/ox-rss.el"
 cp "$dotfiles/lisp/ox-word.el" "$HOME/.emacs.d/lisp/ox-word.el"
 
@@ -51,7 +51,7 @@ echo "Emacs setup done"
 
 # symlink
 ln -sf "$dotfiles/vimrc" "$HOME/.vimrc"
-ln -sf "$dotfiles/emacs" "$HOME/.emacs.d/config.el"
+ln -sf "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
