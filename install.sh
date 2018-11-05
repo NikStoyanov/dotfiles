@@ -47,3 +47,7 @@ cp $dotfiles/lisp/ox-rss.el $HOME/.emacs.d/lisp/ox-rss.el
 cp $dotfiles/lisp/ox-word.el $HOME/.emacs.d/lisp/ox-word.el
 
 echo "Emacs setup done"
+
+# sync scripts
+cp $dotfiles/sync/gsync.sh $HOME/gsync.sh
+cp $dotfiles/sync/sync.sh $HOME/sync.sh
