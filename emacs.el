@@ -80,6 +80,8 @@
 
 (column-number-mode 1)
 
+(setq default-tab-width 4)
+
 ;; for inline image resize
 (setq org-image-actual-width nil)
 
