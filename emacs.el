@@ -80,7 +80,10 @@
 
 (column-number-mode 1)
 
+;; tab = 4 spaces
+;; replace tab with spaces
 (setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 ;; for inline image resize
 (setq org-image-actual-width nil)
