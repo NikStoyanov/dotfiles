@@ -1,5 +1,5 @@
 ;; packages
-(setq package-list '(reftex auto-complete nlinum org-ref ob-ipython elfeed))
+(setq package-list '(reftex auto-complete magit nlinum org-ref ob-ipython elfeed))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
