@@ -46,6 +46,7 @@ fi
 cp "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
 cp "$dotfiles/lisp/ox-rss.el" "$HOME/.emacs.d/lisp/ox-rss.el"
 cp "$dotfiles/lisp/ox-word.el" "$HOME/.emacs.d/lisp/ox-word.el"
+echo "(load /"~/.emacs.d/config.el/")" >> "$HOME/.emacs"
 
 echo "Emacs setup done"
 
