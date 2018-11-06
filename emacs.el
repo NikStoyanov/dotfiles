@@ -134,7 +134,7 @@
  'org-babel-load-languages '((python . t)
 			     (ipython . t)
 			     (R . t)
-			     (sh . t)
+			     (shell . t)
 			     (calc . t)
 			     (emacs-lisp . t)
 			     (plantuml . t)
