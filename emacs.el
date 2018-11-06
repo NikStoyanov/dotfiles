@@ -32,7 +32,6 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; reftex with AUCTeX LaTeX mode
 
 ;; add intellisense and linter
-(add-hook 'after-init-hook #'global-flycheck-mode)
 (require 'auto-complete)
 (setq ac-config-default t)
 
