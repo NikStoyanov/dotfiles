@@ -1,5 +1,5 @@
 ;; packages
-(setq package-list '(reftex auto-complete magit nlinum org-ref ob-ipython elfeed))
+(setq package-list '(reftex auto-complete magit nlinum org-ref ob-ipython elfeed powerline))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -30,6 +30,10 @@
 ;; configuration for latex work
 (require 'reftex) ;; cross ref and bib
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; reftex with AUCTeX LaTeX mode
+
+;; powerline setup
+(require 'powerline)
+(powerline-default-theme)
 
 ;; add intellisense and linter
 (require 'auto-complete)
