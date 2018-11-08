@@ -9,9 +9,6 @@
    '("melpa" . "https://melpa.milkbox.net/packages/")
    t))
 
-;; activate packages
-(package-initialize)
-
 ;; fetch the list of available packages 
 (unless package-archive-contents
   (package-refresh-contents))

@@ -5,6 +5,7 @@ dotfiles="$HOME/git/dotfiles"
 rm -rf "$HOME/.vim"
 rm -rf "$HOME/.vimrc"
 rm -rf "$HOME/.emacs.d"
+rm "$HOME/.emacs"
 
 # setup vim
 echo "Setting up vim"
@@ -43,10 +44,10 @@ if [ ! -d "$HOME/.emacs.d/lisp/" ]; then
         mkdir "$HOME/.emacs.d/lisp/"
 fi
 
+cp "$dotfiles/init.el" "$HOME/.emacs.d/init.el"
 cp "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
 cp "$dotfiles/lisp/ox-rss.el" "$HOME/.emacs.d/lisp/ox-rss.el"
 cp "$dotfiles/lisp/ox-word.el" "$HOME/.emacs.d/lisp/ox-word.el"
-echo "(load /"~/.emacs.d/config.el/")" >> "$HOME/.emacs"
 
 echo "Emacs setup done"
 
