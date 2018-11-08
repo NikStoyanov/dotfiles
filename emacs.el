@@ -663,7 +663,8 @@ relative link in the sitemap-publish function"
 ;; add custom templates
 ;; blog article
 (add-to-list 'org-structure-template-alist
-             '("b" "#+TITLE: ?
+             '("b" "# -*- org-export-babel-evaluate: nil -*-
+#+TITLE: ?
 #+AUTHOR: Nikola Stoyanov
 #+EMAIL: nikola.stoyanov@postgrad.manchester.ac.uk
 #+DATE:
