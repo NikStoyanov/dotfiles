@@ -168,6 +168,10 @@
  '(("DONE" . "PaleGreen"))
  )
 
+;; change org level 1 color for wombat
+(custom-theme-set-faces 'user
+                        `(org-level-1 ((t (:foreground "orange")))))
+
 ;; org-ref setup
 (require 'org-ref)
 (setq reftex-default-bibliography '("~/Dropbox/PhD/Academic/Text_docs/Ref/PhD.bib"))
