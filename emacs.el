@@ -11,7 +11,7 @@
    t))
 
 ;; activate packages
-(when (>= emacs-major-version 27)
+(when (< emacs-major-version 27)
   (package-initialize))
 
 ;; fetch the list of available packages 
