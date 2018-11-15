@@ -1,5 +1,6 @@
 ;; packages
-(setq package-list '(reftex auto-complete magit nlinum org-ref ob-ipython elfeed powerline))
+(setq package-list '(reftex auto-complete magit nlinum org-ref
+                            ob-ipython elfeed powerline ox-hugo))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -8,6 +9,10 @@
    'package-archives
    '("melpa" . "https://melpa.milkbox.net/packages/")
    t))
+
+;; activate packages
+(when (< emacs-major-version 27)
+  (package-initialize))
 
 ;; fetch the list of available packages 
 (unless package-archive-contents
@@ -163,6 +168,10 @@
  '(("DONE" . "PaleGreen"))
  )
 
+;; change org level 1 color for wombat
+(custom-theme-set-faces 'user
+                        `(org-level-1 ((t (:foreground "orange")))))
+
 ;; org-ref setup
 (require 'org-ref)
 (setq reftex-default-bibliography '("~/Dropbox/PhD/Academic/Text_docs/Ref/PhD.bib"))
@@ -191,6 +200,9 @@
 ;; configure the behaviour when opening links
 (setq org-file-apps
       '(("\\.pdf\\'" . system)))
+
+;; configure magit
+(global-set-key "\C-c-" 'magit-status)
 
 ;; configure elfeed
 (require 'elfeed)
@@ -402,257 +414,9 @@ Suggestions: %s
   t) ; append
 
 ;; blogging configuration
-(require 'ox-html)
-(require 'ox-rss)
-
-(setq org-export-html-coding-system 'utf-8-unix)
-(setq org-html-viewport nil)
-(setq my-blog-extra-head
-      (concat
-       "<link rel='icon' href='img/fav.ico' />
-        <link rel='stylesheet' href='template/hyde.css'>
-        <link rel='stylesheet' href='template/poole.css'>
-        <link rel='stylesheet' href='template/source.css'>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>"))
-
-(setq my-blog-header-file "~/git/Personal_Website/header.html")
-(defun my-blog-header (arg)
-  (with-temp-buffer
-    (insert-file-contents my-blog-header-file)
-    (buffer-string)))
-
-(setq my-blog-footer
-    "")
-(defun my-blog-org-export-format-drawer (name content)
-  (concat "<div class=\"drawer " (downcase name) "\">\n"
-    "<h6>" (capitalize name) "</h6>\n"
-    content
-    "\n</div>"))
-
-(defun my-blog-get-preview (file)
-  "The comments in FILE have to be on their own lines, prefereably before and after paragraphs."
-  (with-temp-buffer
-    (insert-file-contents file)
-    (goto-char (point-min))
-    (let ((beg (+ 1 (re-search-forward "BEGIN_PREVIEW")))
-          (end (progn (re-search-forward "END_PREVIEW")
-                      (match-beginning 0))))
-      (buffer-substring beg end))))
-
-(defun my-blog-sitemap (project &optional sitemap-filename)
-  "Generate the sitemap for my blog."
-  (let* ((project-plist (cdr project))
-         (dir (file-name-as-directory
-               (plist-get project-plist :base-directory)))
-         (localdir (file-name-directory dir))
-         (exclude-regexp (plist-get project-plist :exclude))
-         (files (nreverse
-                 (org-publish-get-base-files project exclude-regexp)))
-         (sitemap-filename (concat dir (or sitemap-filename "sitemap.org")))
-         (sitemap-sans-extension
-          (plist-get project-plist :sitemap-sans-extension))
-         (visiting (find-buffer-visiting sitemap-filename))
-         file sitemap-buffer)
-    (with-current-buffer
-        (let ((org-inhibit-startup t))
-          (setq sitemap-buffer
-                (or visiting (find-file sitemap-filename))))
-      (erase-buffer)
-      ;; loop through all of the files in the project
-      (while (setq file (pop files))
-        (let ((fn (file-name-nondirectory file))
-              (link ;; changed this to fix links. see postprocessor.
-               (file-relative-name file (file-name-as-directory
-                                         (expand-file-name (concat (file-name-as-directory dir) ".")))))
-              (oldlocal localdir))
-          (when sitemap-sans-extension
-            (setq link (file-name-sans-extension link)))
-          ;; sitemap shouldn't list itself
-          (unless (equal (file-truename sitemap-filename)
-                         (file-truename file))
-            (let (;; get the title and date of the current file
-                  (title (org-publish-format-file-entry "%t" file project-plist))
-                  (date (org-publish-format-file-entry "%d" file project-plist))
-                  ;; get the preview section from the current file
-                  (preview (my-blog-get-preview file))
-                  (regexp "\\(.*\\)\\[\\([^][]+\\)\\]\\(.*\\)"))
-              ;; insert a horizontal line before every post, kill the first one
-              ;; before saving
-              (insert "-----\n")
-              (cond ((string-match-p regexp title)
-                     (string-match regexp title)
-                     ;; insert every post as headline
-                     (insert (concat"* " (match-string 1 title)
-                                    "[[file:" link "]["
-                                    (match-string 2 title)
-                                    "]]" (match-string 3 title) "\n")))
-                    (t (insert (concat "* [[file:" link "][" title "]]\n"))))
-              ;; add properties for `ox-rss.el' here
-              (let ((rss-permalink (concat (file-name-sans-extension link) ".html"))
-                    (rss-pubdate (format-time-string
-                                  (car org-time-stamp-formats)
-                                  (org-publish-find-date file))))
-                (org-set-property "RSS_PERMALINK" rss-permalink)
-                (org-set-property "UBDATE" rss-pubdate))
-              ;; insert the date, preview, & read more link
-              (insert (concat date "\n\n"))
-              (insert preview)
-	      (insert "attr_html: ")
-	      (insert "\n\n")
-              (insert (concat "[[file:" link "][Read More...]]\n"))))))
-      ;; kill the first hrule to make this look OK
-      (goto-char (point-min))
-      (let ((kill-whole-line t)) (kill-line))
-      (save-buffer))
-    (or visiting (kill-buffer sitemap-buffer))))
-
-(setq my-blog-emacs-config-name "emacsconfig.org")
-(setq my-blog-process-emacs-config t)
-
-(defun my-blog-pages-postprocessor (project-plist)
-  (message "In the pages postprocessor."))
-
-(defun my-blog-articles-preprocessor (project-plist)
-  (message "In the articles preprocessor."))
-
-(defun my-blog-articles-postprocessor (project-plist)
-  "Message the sitemap file and move it up one directory.
-
-for this to work, we have already fixed the creation of the
-relative link in the sitemap-publish function"
-  (let* ((sitemap-fn (concat (file-name-sans-extension (plist-get project-plist :sitemap-filename)) ".html"))
-         (sitemap-olddir (plist-get project-plist :publishing-directory))
-         (sitemap-newdir (expand-file-name (concat (file-name-as-directory sitemap-olddir) "..")))
-         (sitemap-oldfile (expand-file-name sitemap-fn sitemap-olddir))
-         (sitemap-newfile (expand-file-name (concat (file-name-as-directory sitemap-newdir) sitemap-fn))))
-    (with-temp-buffer
-      (goto-char (point-min))
-      (insert-file-contents sitemap-oldfile)
-      ;; massage the sitemap if wanted
-
-      ;; delete the old file and write the correct one
-      (delete-file sitemap-oldfile)
-      (write-file sitemap-newfile))))
-
-(setq org-publish-project-alist
-      `(("blog"
-         :components ("blog-articles", "blog-pages", "blog-rss", "blog-res", "blog-images", "blog-dl"))
-        ("blog-articles"
-         :base-directory "~/git/Personal_Website/blog/"
-         :base-extension "org"
-         :publishing-directory "~/git/Personal_Website/www/"
-         :publishing-function org-html-publish-to-html
-;;         :preparation-function my-blog-articles-preprocessor
-         :completion-function my-blog-articles-postprocessor
-         :htmlized-source t ;; this enables htmlize, which means that I can use css for code!
-
-         :with-author t
-         :with-creator nil
-         :with-date t
-
-         :headline-level 4
-         :section-numbers nil
-         :with-toc nil
-         :with-drawers t
-         :with-sub-superscript nil ;; important!!
-
-         ;; the following removes extra headers from HTML output -- important!
-         :html-link-home "/"
-         :html-head nil ;; cleans up anything that would have been in there.
-         :html-head-extra ,my-blog-extra-head
-         :html-head-include-default-style nil
-         :html-head-include-scripts nil
-         :html-viewport nil
-
-         :html-format-drawer-function my-blog-org-export-format-drawer
-         :html-home/up-format ""
-;;         :html-mathjax-options ,my-blog-local-mathjax
-;;         :html-mathjax-template "<script type=\"text/javascript\" src=\"%PATH\"></script>"
-         :html-footnotes-section "<div id='footnotes'><!--%s-->%s</div>"
-         :html-link-up ""
-         :html-link-home ""
-         :html-preamble my-blog-header
-         :html-postamble ,my-blog-footer
-
-         ;; sitemap - list of blog articles
-         :auto-sitemap t
-         :sitemap-filename "blog.org"
-         :sitemap-title "Blog"
-         ;; custom sitemap generator function
-         :sitemap-function my-blog-sitemap
-         :sitemap-sort-files anti-chronologically
-         :sitemap-date-format "Published: %a %b %d %Y")
-        ("blog-pages"
-         :base-directory "~/git/Personal_Website/pages/"
-         :base-extension "org"
-         :publishing-directory "~/git/Personal_Website/www/"
-         :publishing-function org-html-publish-to-html
-         ;;:preparation-function my-blog-pages-preprocessor
-         ;;:completion-function my-blog-pages-postprocessor
-         :htmlized-source t
-
-         :with-author t
-         :with-creator nil
-         :with-date t
-
-         :headline-level 4
-         :section-numbers nil
-         :with-toc nil
-         :with-drawers t
-         :with-sub-superscript nil ;; important!!
-         :html-viewport nil ;; hasn't worked yet
-
-         ;; the following removes extra headers from HTML output -- important!
-         :html-link-home "/"
-         :html-head nil ;; cleans up anything that would have been in there.
-         :html-head-extra ,my-blog-extra-head
-         :html-head-include-default-style nil
-         :html-head-include-scripts nil
-
-         :html-format-drawer-function my-blog-org-export-format-drawer
-         :html-home/up-format ""
-;;         :html-mathjax-options ,my-blog-local-mathjax
-;;         :html-mathjax-template "<script type=\"text/javascript\" src=\"%PATH\"></script>"
-         :html-footnotes-section "<div id='footnotes'><!--%s-->%s</div>"
-         :html-link-up ""
-         :html-link-home ""
-
-         :html-preamble my-blog-header
-         :html-postamble ,my-blog-footer)
-        ("blog-rss"
-         :base-directory "~/git/Personal_Website/blog/"
-         :base-extension "org"
-         :publishing-directory "~/git/Personal_Website/www/"
-         :publishing-function org-rss-publish-to-rss
-
-         :html-link-home "http://niksto.net/"
-         :html-link-use-abs-url t
-
-         :title "Nikola Stoyanov"
-         :rss-image-url "http://niksto.net/img/feed-icon-28x28.png"
-         :section-numbers nil
-         :exclude ".*"
-         :include ("blog.org")
-         :table-of-contents nil)
-        ("blog-res"
-         :base-directory "~/git/Personal_Website/template/"
-         :base-extension ".*"
-         :publishing-directory "~/git/Personal_Website/www/template/"
-         :publishing-function org-publish-attachment
-         ;;:completion-function my-blog-minify-css
-	 )
-        ("blog-images"
-         :base-directory "~/git/Personal_Website/img/"
-         :base-extension ".*"
-         :publishing-directory "~/git/Personal_Website/www/img/"
-         :publishing-function org-publish-attachment
-         :recursive t)
-        ("blog-doc"
-         :base-directory "~/git/Personal_Website/doc/"
-         :base-extension ".*"
-         :publishing-directory "~/git/Personal_Website/www/doc/"
-         :publishing-function org-publish-attachment
-         :Recursive t)))
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+(require 'ox-hugo-auto-export)
 
 ;; custom css to color export code
 (setq org-html-htmlize-output-type 'css)
@@ -660,38 +424,25 @@ relative link in the sitemap-publish function"
 ;; add custom templates
 ;; blog article
 (add-to-list 'org-structure-template-alist
-             '("b" "#+TITLE: ?
+             '("b" "# -*- org-export-babel-evaluate: nil -*-
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: posts
+
+#+TITLE: ?
+
 #+AUTHOR: Nikola Stoyanov
-#+EMAIL: nikola.stoyanov@postgrad.manchester.ac.uk
-#+DATE:
+#+EMAIL: nikst@posteo.net
+#+DATE: 
+
+#+HUGO_TAGS: 
+#+HUGO_CATEGORIES: 
+#+HUGO_DRAFT: true
+
 #+STARTUP: showall
 #+STARTUP: showstars
 #+STARTUP: inlineimages
 
-#+BEGIN_PREVIEW\n\n#+END_PREVIEW\n
-
-#+BEGIN_HTML
-<div id='disqus_thread'></div>
-<script>
-    var disqus_config = function () {
-        this.page.url = 'https://niksto.net/xxxxxxxxxxxxxxxxxxxx.html';
-        this.page.identifier = 'M-x xah-insert-random-';
-        this.page.title = 'Title';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://niksto-net.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>
-    Please enable JavaScript to view the
-    <a href='https://disqus.com/?ref_noscript' rel='nofollow'>
-        comments powered by Disqus.
-    </a>
-</noscript>
-#+END_HTML"))
+* "))
 ;; for report writing
 
 ;; set caption for tables below
@@ -699,10 +450,9 @@ relative link in the sitemap-publish function"
 
 ;; report template
 (add-to-list 'org-structure-template-alist
-	     '("rep" "# -*- org-export-babel-evaluate: nil -*-
-\\newpage
+	     '("rep" "
 bibliographystyle:unsrt
-bibliography:references.bib
+bibliography:~/Dropbox/PhD/Academic/Text_Docs/Ref/references.bib
 "))
 ;; figure insertion
 (add-to-list 'org-structure-template-alist
