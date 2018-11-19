@@ -1,6 +1,7 @@
 ;; packages
 (setq package-list '(reftex auto-complete magit nlinum org-ref
-                            ob-ipython elfeed powerline ox-hugo))
+                            ob-ipython elfeed powerline ox-hugo
+                            auctex))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -30,6 +31,9 @@
 (load-theme 'wombat)
 
 ;; configuration for latex work
+(setq-default TeX-master nil)
+(setq TeX-parse-self t)
+(setq TeX-auto-save t)
 (require 'reftex) ;; cross ref and bib
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; reftex with AUCTeX LaTeX mode
 
