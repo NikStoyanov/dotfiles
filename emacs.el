@@ -1,7 +1,7 @@
 ;; packages
-(setq package-list '(reftex auto-complete magit nlinum org-ref
-                            ob-ipython elfeed powerline ox-hugo
-                            auctex))
+(setq package-list '(auto-complete magit nlinum org-ref
+                     ob-ipython elfeed powerline ox-hugo
+                     auctex reftex leuven-theme))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -28,7 +28,9 @@
 ;; ox-rss
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(load-theme 'wombat)
+;; lueven theme settings
+(load-theme 'leuven t)
+(setq org-fontify-whole-heading-line t)
 
 ;; configuration for latex work
 (setq-default TeX-master nil)
@@ -98,16 +100,6 @@
 ;; for inline image resize
 (setq org-image-actual-width nil)
 
-;; source code fontification
-(setq org-src-fontify-natively t)
-;; configure org-mode to highlight headings and source code
-(defface org-block-begin-line
-  '((t (:foreground "#99968b" :background "#303030" :box (:style released-button))))
-    "Face used for the line delimiting the begin of source blocks.")
-(defface org-block-end-line
-  '((t (:foreground "#99968b" :background "#303030" :box (:style released-button))))
-  "Face used for the line delimiting the end of source blocks.")
-
 ;; set clock format
 (setq org-time-clocksum-use-effort-durations t)
 
@@ -163,18 +155,6 @@
    (font-latex-add-keywords '(("subfloat" "*[[{")) 'reference)
    (font-latex-add-keywords '(("textwidth" "*[[{")) 'reference)
    (font-latex-add-keywords '(("includegraphics" "*[[{")) 'reference)))
-
-;; chage todo and done for visibility
-(setq org-todo-keyword-faces
- '(("TODO" . "pink"))
- )
-(setq org-todo-keyword-faces
- '(("DONE" . "PaleGreen"))
- )
-
-;; change org level 1 color for wombat
-(custom-theme-set-faces 'user
-                        `(org-level-1 ((t (:foreground "orange")))))
 
 ;; org-ref setup
 (require 'org-ref)
