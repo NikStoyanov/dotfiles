@@ -434,7 +434,12 @@ Suggestions: %s
 
 ;; report template
 (add-to-list 'org-structure-template-alist
-	     '("rep" "
+	     '("rep" "#+TITLE: ?
+
+#+AUTHOR: Nikola Stoyanov
+#+EMAIL: nikst@posteo.net
+#+DATE: 
+
 bibliographystyle:unsrt
 bibliography:~/Dropbox/PhD/Academic/Text_Docs/Ref/references.bib
 "))
