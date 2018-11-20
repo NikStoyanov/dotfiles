@@ -53,6 +53,9 @@
 ;; add indentation for tab in org files
 (setq org-src-tab-acts-natively t)
 
+;; increase size of generated latex preview in org
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+
 ;; appearance
 (require 'nlinum)           ; line number display
 
