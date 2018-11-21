@@ -30,7 +30,6 @@
 
 ;; lueven theme settings
 (load-theme 'leuven t)
-(setq org-fontify-whole-heading-line t)
 
 ;; configuration for latex work
 (setq-default TeX-master nil)
@@ -47,17 +46,31 @@
 (require 'auto-complete)
 (setq ac-config-default t)
 
-;; color code in org-mode export
+;; configure orgmode
+(require 'org)
 (setq org-latex-listings 'minted)
-
-;; add indentation for tab in org files
+(setq org-fontify-whole-heading-line t)
 (setq org-src-tab-acts-natively t)
-
-;; increase size of generated latex preview in org
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+(setq org-image-actual-width nil)
+(setq org-time-clocksum-use-effort-durations t)
+;; setup babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((python . t)
+			     (ipython . t)
+			     (R . t)
+			     (shell . t)
+			     (calc . t)
+			     (emacs-lisp . t)
+			     (plantuml . t)
+			     (latex . t)
+			     (ditaa . t)))
 
-;; appearance
-(require 'nlinum)           ; line number display
+;; display/update images in the buffer after evaluation
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+
+;; line number display
+(require 'nlinum)
 
 ;; set line numbering
 (defconst modi/linum-mode-hooks '(verilog-mode-hook
@@ -74,39 +87,24 @@
                                   tcl-mode-hook
 				                  org-hook)
   "List of hooks of major modes in which a linum mode should be enabled.")
+
+;; line number configuration
 (when global-linum-mode
   (global-nlinum-mode -1))
-
 (dolist (hook modi/linum-mode-hooks)
   (add-hook hook #'nlinum-mode))
-
 (setq nlinum-highlight-current-line t)
 
+;; general settings
 (when (display-graphic-p)
   (tool-bar-mode -1))
-
 (setq inhibit-startup-screen t)
-
 (tool-bar-mode 0)
-
 (setq initial-scratch-message nil)
-
 (line-number-mode 1)
-
 (column-number-mode 1)
-
-;; tab = 4 spaces
-;; replace tab with spaces
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
-
-;; for inline image resize
-(setq org-image-actual-width nil)
-
-;; set clock format
-(setq org-time-clocksum-use-effort-durations t)
-
-;; answer with y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Disable all version control which makes startup and opening files much faster
@@ -133,21 +131,6 @@
 (global-set-key (kbd "C-S-x <C-down>") 'windmove-down)
 (global-set-key (kbd "C-S-x <C-left>") 'windmove-left)
 (global-set-key (kbd "C-S-x <C-right>") 'windmove-right)
-
-;; setup babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages '((python . t)
-			     (ipython . t)
-			     (R . t)
-			     (shell . t)
-			     (calc . t)
-			     (emacs-lisp . t)
-			     (plantuml . t)
-			     (latex . t)
-			     (ditaa . t)))
-
-;; display/update images in the buffer after evaluation
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
 ;; color code some latex code
 (add-hook
