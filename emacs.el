@@ -171,8 +171,11 @@
 (setq org-file-apps
       '(("\\.pdf\\'" . system)))
 
+;; configure shell
+(global-set-key (kbd "C-x m") 'eshell)
+
 ;; configure magit
-(global-set-key "\C-c-" 'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; configure elfeed
 (require 'elfeed)
