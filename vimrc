@@ -10,6 +10,10 @@ Plug 'vim-airline/vim-airline-themes'
 
 " git support
 Plug 'tpope/vim-fugitive'
+
+" Julia support
+Plug 'JuliaEditorSupport/julia-vim'
+
 call plug#end()
 
 " set color scheme
