@@ -6,6 +6,7 @@ rm -rf "$HOME/.vim"
 rm -rf "$HOME/.vimrc"
 rm -rf "$HOME/.emacs.d"
 rm "$HOME/.emacs"
+rm -rf "$HOME/.gitconfig"
 
 # setup vim
 echo "Setting up vim"
@@ -54,6 +55,7 @@ echo "Emacs setup done"
 # symlink
 ln -sf "$dotfiles/vimrc" "$HOME/.vimrc"
 ln -sf "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
+ln -sf "$dotfiles/gitconfig" "$HOME/.gitconfig"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"

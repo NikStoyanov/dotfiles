@@ -1,0 +1,7 @@
+[user]
+        email = nstoyanov.92@gmail.com
+        name = Nikola Stoyanov
+[core]
+        editor = vim
+[alias]
+        lop = log --graph --decorate --pretty=oneline --abbrev-commit --all
