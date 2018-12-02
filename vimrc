@@ -38,6 +38,26 @@ set cursorline
 set incsearch " search as entering characters
 set hlsearch " highligh matches
 nnoremap <leader><space> :nohlsearch<CR> " turn off keeping highlight
+" Ignore case when searching
+set ignorecase
+" When searching try to be smart about cases
+set smartcase
+" Highlight search results
+set hlsearch
 
 " set airline theme
 let g:airline_theme='deus'
+
+"Always show current position
+set ruler
+
+" Height of the command bar
+set cmdheight=2
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
