@@ -1,7 +1,7 @@
 ;; packages
 (setq package-list '(auto-complete magit nlinum org-ref
                      ob-ipython elfeed powerline ox-hugo
-                     auctex reftex leuven-theme))
+                     auctex reftex leuven-theme virtualenvwrapper))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -27,6 +27,12 @@
 ;; add custom packages which are not part of melpa
 ;; ox-rss
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;; configure virtual environment
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+;; (setq venv-location "/path/")
 
 ;; lueven theme settings
 (load-theme 'leuven t)
