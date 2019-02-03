@@ -67,7 +67,8 @@
 			     (ditaa . t)))
 
 ;; display/update images in the buffer after evaluation
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(add-hook 'org-mode-hook 'org-display-inline-images)
 
 ;; line number display
 (require 'nlinum)
