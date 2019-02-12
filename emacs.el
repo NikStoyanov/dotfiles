@@ -405,7 +405,8 @@ Suggestions: %s
 ;; blog article
 (add-to-list 'org-structure-template-alist
              '("b" "# -*- org-export-babel-evaluate: nil -*-
-#+HUGO_BASE_DIR: ../
+# -*- org-confirm-babel-evaluate: nil -*-
+#+HUGO_BASE_DIR: ../../
 #+HUGO_SECTION: posts
 
 #+TITLE: ?
@@ -418,7 +419,7 @@ Suggestions: %s
 #+HUGO_CATEGORIES: 
 #+HUGO_DRAFT: true
 
-#+STARTUP: showall
+#+STARTUP: showeverything
 #+STARTUP: showstars
 #+STARTUP: inlineimages
 
