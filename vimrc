@@ -14,16 +14,32 @@ Plug 'tpope/vim-fugitive'
 " Julia support
 Plug 'JuliaEditorSupport/julia-vim'
 
+" TOML support
+Plug 'cespare/vim-toml'
+
 call plug#end()
 
 " set color scheme
 set background=dark
 colorscheme palenight
 
-" set tab space
-set tabstop=4 " read
-set softtabstop=4 " write
-set expandtab " sane tabulation (tab=space)
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
 
 " show line numbers
 set number
