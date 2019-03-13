@@ -17,6 +17,9 @@ Plug 'JuliaEditorSupport/julia-vim'
 " TOML support
 Plug 'cespare/vim-toml'
 
+" Git gutter
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 " set color scheme
