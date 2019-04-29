@@ -23,10 +23,13 @@ Plug 'airblade/vim-gitgutter'
 " Julia support
 Plug 'JuliaEditorSupport/julia-vim'
 
+" Go support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
 " set color scheme
-set background=dark
+"set background=dark
 colorscheme palenight
 
 " Use spaces instead of tabs
