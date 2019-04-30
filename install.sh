@@ -8,6 +8,7 @@ rm -rf "$HOME/.emacs.d"
 rm "$HOME/.emacs"
 rm -rf "$HOME/.gitconfig"
 rm -rf "$HOME/.bashrc"
+rm -rf "$HOME/.tmux.conf"
 
 # setup vim
 echo "Setting up vim"
@@ -58,6 +59,7 @@ ln -sf "$dotfiles/vimrc" "$HOME/.vimrc"
 ln -sf "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
 ln -sf "$dotfiles/gitconfig" "$HOME/.gitconfig"
 ln -sf "$dotfiles/bashrc" "$HOME/.bashrc"
+ln -sf "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
