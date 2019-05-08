@@ -113,6 +113,7 @@
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq-default fill-column 80)
 
 ;; Disable all version control which makes startup and opening files much faster
 ;; except git
