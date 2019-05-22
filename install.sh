@@ -9,6 +9,7 @@ rm "$HOME/.emacs"
 rm -rf "$HOME/.gitconfig"
 rm -rf "$HOME/.bashrc"
 rm -rf "$HOME/.tmux.conf"
+rm -rf "$HOME/.julia/config/startup.jl"
 
 # setup vim
 echo "Setting up vim"
@@ -60,6 +61,7 @@ ln -sf "$dotfiles/emacs.el" "$HOME/.emacs.d/config.el"
 ln -sf "$dotfiles/gitconfig" "$HOME/.gitconfig"
 ln -sf "$dotfiles/bashrc" "$HOME/.bashrc"
 ln -sf "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$dotfiles/startup.jl" "$HOME/.julia/config/startup.jl"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
