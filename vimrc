@@ -1,6 +1,4 @@
 call plug#begin('~/.vim/plugged')
-" theme
-Plug 'drewtempelmeyer/palenight.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -28,9 +26,17 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
-" set color scheme
-"set background=dark
-colorscheme palenight
+" Set color scheme
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+try
+    colorscheme desert
+catch
+endtry
+set background=dark
 
 " Use spaces instead of tabs
 set expandtab
