@@ -105,3 +105,6 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
+
+" Opens a new tab with the current buffer's path
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
