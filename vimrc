@@ -108,3 +108,6 @@ map <leader>t<leader> :tabnext
 
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Spell check
+map <leader>ss :setlocal spell!<cr>
