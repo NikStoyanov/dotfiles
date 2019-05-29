@@ -89,3 +89,8 @@ set cmdheight=2
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
