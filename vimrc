@@ -77,6 +77,8 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch 
 
+nmap <leader>z :noh<CR>
+
 " set airline theme
 let g:airline_theme='deus'
 
