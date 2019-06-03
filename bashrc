@@ -131,7 +131,7 @@ source ~/.local/bin/virtualenvwrapper.sh
 PATH=$HOME/git/emacs/src:$PATH
 
 # add julia to path
-PATH=$HOME/Documents/julia-1.1.0/bin/:$PATH
+PATH=$HOME/Documents/julia-1.1.1/bin/:$PATH
 
 # add golang to path
 PATH=$HOME/Documents/go1.12/bin/:$PATH
