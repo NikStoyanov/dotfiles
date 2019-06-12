@@ -1,7 +1,7 @@
 ;; packages
 (setq package-list '(auto-complete magit nlinum org-ref
-                     ob-ipython elfeed powerline ox-hugo
-                     auctex reftex leuven-theme virtualenvwrapper))
+                     ob-ipython elfeed powerline auctex
+                     reftex leuven-theme virtualenvwrapper))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -393,11 +393,6 @@ Suggestions: %s
 (add-to-list 'words-funcs
   '("s" "spell/grammar" words-atd)
   t) ; append
-
-;; blogging configuration
-(with-eval-after-load 'ox
-  (require 'ox-hugo))
-(require 'ox-hugo-auto-export)
 
 ;; custom css to color export code
 (setq org-html-htmlize-output-type 'css)
