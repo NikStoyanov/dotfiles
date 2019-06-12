@@ -115,6 +115,7 @@
 (dolist (hook modi/linum-mode-hooks)
   (add-hook hook #'nlinum-mode))
 (setq nlinum-highlight-current-line t)
+(setq nlinum-format " %d ")
 
 ;; general settings
 (when (display-graphic-p)
