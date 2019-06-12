@@ -1,7 +1,7 @@
 ;; packages
 (setq package-list '(auto-complete magit nlinum org-ref
                      ob-ipython elfeed powerline auctex
-                     reftex leuven-theme virtualenvwrapper))
+                     reftex doom-themes virtualenvwrapper))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -34,8 +34,17 @@
 (venv-initialize-eshell)
 ;; (setq venv-location "/path/")
 
-;; lueven theme settings
-(load-theme 'leuven t)
+;; doom theme setup
+(require 'doom-themes)
+(setq doom-themes-enable-bold t
+    doom-themes-enable-italic t)
+(load-theme 'doom-one t)
+;; Enable flashing mode-line on errors
+(doom-themes-visual-bell-config)
+;; Enable custom neotree theme
+(doom-themes-neotree-config)
+;; Corrects (and improves) org-mode's native fontification.
+(doom-themes-org-config)
 
 ;; configuration for latex work
 (setq-default TeX-master nil)
@@ -45,8 +54,8 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; reftex with AUCTeX LaTeX mode
 
 ;; powerline setup
-(require 'powerline)
-(powerline-default-theme)
+;;(require 'powerline)
+;;(powerline-default-theme)
 
 ;; add intellisense and linter
 (require 'auto-complete)
