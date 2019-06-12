@@ -1,7 +1,8 @@
 ;; packages
 (setq package-list '(auto-complete magit nlinum org-ref
                      ob-ipython elfeed powerline auctex
-                     reftex doom-themes virtualenvwrapper))
+                     reftex doom-themes doom-modeline
+                     virtualenvwrapper))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -46,16 +47,20 @@
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
 
+;; Doom modeline
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+(setq doom-modeline-height 25)
+(setq doom-modeline-bar-width 3)
+(setq doom-modeline-icon t)
+(setq doom-modeline-env-version t)
+
 ;; configuration for latex work
 (setq-default TeX-master nil)
 (setq TeX-parse-self t)
 (setq TeX-auto-save t)
 (require 'reftex) ;; cross ref and bib
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; reftex with AUCTeX LaTeX mode
-
-;; powerline setup
-;;(require 'powerline)
-;;(powerline-default-theme)
 
 ;; add intellisense and linter
 (require 'auto-complete)
