@@ -3,7 +3,7 @@
                      ob-ipython elfeed auctex
                      reftex doom-themes doom-modeline
                      virtualenvwrapper diff-hl julia-mode
-                     julia-repl))
+                     julia-repl markdown-mode))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
