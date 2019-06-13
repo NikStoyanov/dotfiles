@@ -2,7 +2,8 @@
 (setq package-list '(auto-complete magit nlinum org-ref
                      ob-ipython elfeed auctex
                      reftex doom-themes doom-modeline
-                     virtualenvwrapper diff-hl))
+                     virtualenvwrapper diff-hl julia-mode
+                     julia-repl))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -87,6 +88,12 @@
 			     (plantuml . t)
 			     (latex . t)
 			     (ditaa . t)))
+
+;; Enable julia mode and repl
+(require 'julia-mode)
+(require 'julia-repl)
+(add-hook 'julia-mode-hook 'julia-repl-mode)
+(add-hook 'julia-repl-hook #'julia-repl-use-emacsclient)
 
 ;; display/update images in the buffer after evaluation
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
