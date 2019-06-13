@@ -202,6 +202,7 @@
 
 ;; Git gutter
 (global-diff-hl-mode)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 ;; configure elfeed
 (require 'elfeed)
