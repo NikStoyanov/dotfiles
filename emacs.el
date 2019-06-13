@@ -2,7 +2,7 @@
 (setq package-list '(auto-complete magit nlinum org-ref
                      ob-ipython elfeed auctex
                      reftex doom-themes doom-modeline
-                     virtualenvwrapper))
+                     virtualenvwrapper diff-hl))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -199,6 +199,9 @@
 
 ;; configure magit
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Git gutter
+(global-diff-hl-mode)
 
 ;; configure elfeed
 (require 'elfeed)
