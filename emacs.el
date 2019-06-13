@@ -67,7 +67,9 @@
 
 ;; add intellisense and linter
 (require 'auto-complete)
-(setq ac-config-default t)
+(ac-config-default)
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
 
 ;; configure orgmode
 (require 'org)
