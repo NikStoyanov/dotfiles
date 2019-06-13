@@ -55,6 +55,8 @@
 (setq doom-modeline-icon t)
 (setq doom-modeline-env-version t)
 
+(set-face-background 'hl-line "#3e4446")
+
 ;; configuration for latex work
 (setq-default TeX-master nil)
 (setq TeX-parse-self t)
