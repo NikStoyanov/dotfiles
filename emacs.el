@@ -1,6 +1,6 @@
 ;; packages
 (setq package-list '(auto-complete magit nlinum org-ref
-                     ob-ipython elfeed powerline auctex
+                     ob-ipython elfeed auctex
                      reftex doom-themes doom-modeline
                      virtualenvwrapper))
 
