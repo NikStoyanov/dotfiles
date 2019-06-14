@@ -340,6 +340,15 @@ If invoked with C-u, toggle the setting"
                                              (region-end)))
       (thing-at-point 'word)))))
 
+(defun words-duck ()
+  (interactive)
+  (browse-url
+   (format
+    "https://duckduckgo.com/?q=%s"
+    (if (region-active-p)
+        (url-hexify-string (buffer-substring (region-beginning)
+                                             (region-end)))
+      (thing-at-point 'word)))))
 
 (defvar words-funcs '()
  "functions to run in `words'. Each entry is a list of (key menu-name function).")
@@ -347,8 +356,8 @@ If invoked with C-u, toggle the setting"
 (setq words-funcs
   '(("d" "ictionary" words-dictionary)
     ("t" "hesaurus" words-thesaurus)
-    ("g" "oogle" words-google)))
- 
+    ("g" "oogle" words-google)
+    ("u" "duck" words-duck)))
 
 (defun words ()
   (interactive)
