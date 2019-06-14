@@ -140,6 +140,15 @@
 (setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default fill-column 80)
+(menu-bar-mode -1)
+(when (display-graphic-p)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1))
+
+;; Startup buffer
+(setq initial-buffer-choice "~/")
+(add-to-list 'default-frame-alist '(height . 40))
+(add-to-list 'default-frame-alist '(width . 90))
 
 ;; Disable all version control which makes startup and opening files much faster
 ;; except git
