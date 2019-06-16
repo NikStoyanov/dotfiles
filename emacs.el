@@ -34,7 +34,7 @@
 (require 'virtualenvwrapper)
 (venv-initialize-interactive-shells)
 (venv-initialize-eshell)
-;; (setq venv-location "/path/")
+(setq venv-location "~/Envs/")
 
 ;; doom theme setup
 (require 'doom-themes)
