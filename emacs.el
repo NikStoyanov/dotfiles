@@ -184,6 +184,7 @@
 (when (display-graphic-p)
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
+(toggle-frame-maximized)
 
 ;; Startup buffer
 (setq initial-buffer-choice "~/")
