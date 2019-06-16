@@ -56,7 +56,8 @@
 (setq doom-modeline-icon t)
 (setq doom-modeline-env-version t)
 
-;;(set-face-background 'hl-line "#3e4446")
+;; Highlight current line
+(global-hl-line-mode 1)
 
 ;; configuration for latex work
 (setq-default TeX-master nil)
