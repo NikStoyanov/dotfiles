@@ -4,7 +4,7 @@
                      reftex doom-themes doom-modeline
                      virtualenvwrapper diff-hl julia-mode
                      julia-repl markdown-mode rainbow-delimiters
-                     company company-c-headers elpy))
+                     company company-c-headers elpy ac-js2))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
