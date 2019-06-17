@@ -199,7 +199,7 @@
 (add-hook 'org-mode-hook 'org-display-inline-images)
 
 ;; line number display
-;;(require 'nlinum)
+(require 'nlinum)
 
 ;; set line numbering
 (defconst modi/linum-mode-hooks '(verilog-mode-hook
@@ -214,7 +214,9 @@
                                   css-mode-hook
                                   makefile-gmake-mode-hook
                                   tcl-mode-hook
-				                  org-hook)
+				  LaTeX-mode-hook
+                                  julia-mode-hook
+				  org-hook)
   "List of hooks of major modes in which a linum mode should be enabled.")
 
 ;; line number configuration
