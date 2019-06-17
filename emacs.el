@@ -1,4 +1,4 @@
-;; packages
+; packages
 (setq package-list '(magit nlinum org-ref
                      ob-ipython elfeed auctex
                      reftex doom-themes doom-modeline
@@ -268,10 +268,10 @@
 (setq tramp-auto-save-directory autosave-dir)
 
 ;; setup the multi-window jump behaviour
-(global-set-key (kbd "C-S-x <C-up>") 'windmove-up)
-(global-set-key (kbd "C-S-x <C-down>") 'windmove-down)
-(global-set-key (kbd "C-S-x <C-left>") 'windmove-left)
-(global-set-key (kbd "C-S-x <C-right>") 'windmove-right)
+(global-set-key (kbd "C-c k") 'windmove-up)
+(global-set-key (kbd "C-c j") 'windmove-down)
+(global-set-key (kbd "C-c h") 'windmove-left)
+(global-set-key (kbd "C-c l") 'windmove-right)
 
 ;; color code some latex code
 (add-hook
@@ -298,7 +298,7 @@
 (setq line-move-visual nil)
 
 ;; setup org-mode specific bindings
-(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cd" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
