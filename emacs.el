@@ -214,6 +214,7 @@
                                   css-mode-hook
                                   makefile-gmake-mode-hook
                                   tcl-mode-hook
+                                  markdown-mode-hook
 				  LaTeX-mode-hook
                                   julia-mode-hook
 				  org-hook)
