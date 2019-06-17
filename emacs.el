@@ -224,6 +224,7 @@
   (add-hook hook #'nlinum-mode))
 (setq nlinum-highlight-current-line t)
 (setq nlinum-format " %d ")
+(set-face-foreground 'linum "#696969")
 
 ;; general settings
 (when (display-graphic-p)
