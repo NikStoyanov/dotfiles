@@ -4,7 +4,8 @@
                      reftex doom-themes doom-modeline
                      virtualenvwrapper diff-hl julia-mode
                      julia-repl markdown-mode rainbow-delimiters
-                     company company-c-headers elpy ac-js2))
+                     company company-c-headers elpy ac-js2
+                     ace-jump-mode))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -98,6 +99,10 @@
 
 ;; Auto insert closing delimiters
 (electric-pair-mode 1)
+
+;; Ace jump
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; configuration for latex work
 (setq-default TeX-master nil)
