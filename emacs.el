@@ -5,7 +5,7 @@
                      virtualenvwrapper diff-hl julia-mode
                      julia-repl markdown-mode rainbow-delimiters
                      company company-c-headers elpy ac-js2
-                     ace-jump-mode))
+                     ace-jump-mode expand-region))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -99,6 +99,10 @@
 
 ;; Auto insert closing delimiters
 (electric-pair-mode 1)
+
+;; Expand region setup for easy copy
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; Ace jump
 (require 'ace-jump-mode)
