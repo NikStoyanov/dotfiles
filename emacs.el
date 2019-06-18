@@ -117,7 +117,7 @@
 (setq company-selection-wrap-around t)
 (setq company-tooltip-flip-when-above t)
 (setq company-idle-delay 0.0)
-(add-hook 'after-init-hook 'global-company-mode)
+;;(add-hook 'after-init-hook 'global-company-mode)
 (require 'company-dabbrev)
 (require 'company-dabbrev-code)
 (setq company-dabbrev-code-everywhere t)
