@@ -440,21 +440,21 @@ If invoked with C-u, toggle the setting"
   (interactive)
   (browse-url
    (format
-    "http://dictionary.reference.com/browse/%s?s=t"
+    "https://dictionary.reference.com/browse/%s?s=t"
     (thing-at-point 'word))))
 
 (defun words-thesaurus ()
   (interactive)
   (browse-url
    (format
-    "http://www.thesaurus.com/browse/%s"
+    "https://thesaurus.com/browse/%s"
     (thing-at-point 'word))))
 
 (defun words-google ()
   (interactive)  
   (browse-url
    (format
-    "http://www.google.com/search?q=%s"
+    "https://www.google.com/search?q=%s"
     (if (region-active-p)
         (url-hexify-string (buffer-substring (region-beginning)
                                              (region-end)))
