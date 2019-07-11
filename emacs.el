@@ -176,6 +176,7 @@
         elpy-module-pyvenv
         elpy-module-yasnippet
         elpy-module-sane-defaults)))
+(setq python-check-command "flake8")
 
 ;; configure orgmode
 (require 'org)
