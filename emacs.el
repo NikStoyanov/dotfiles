@@ -4,7 +4,7 @@
                      reftex doom-themes doom-modeline
                      virtualenvwrapper diff-hl julia-mode
                      julia-repl markdown-mode rainbow-delimiters
-                     company company-c-headers elpy ac-js2
+                     company company-c-headers elpy
                      ace-jump-mode expand-region))
 
 ;; load emacs 24's package system. Add MELPA repository.
@@ -121,47 +121,33 @@
 (setq company-selection-wrap-around t)
 (setq company-tooltip-flip-when-above t)
 (setq company-idle-delay 0.0)
-;;(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 (require 'company-dabbrev)
 (require 'company-dabbrev-code)
 (setq company-dabbrev-code-everywhere t)
 (setq company-dabbrev-code-ignore-case nil)
 (setq company-dabbrev-ignore-case nil)
 (add-to-list 'company-dabbrev-code-modes 'julia-mode)
-(add-to-list 'company-dabbrev-code-modes 'matlab-mode)
-(add-to-list 'company-dabbrev-code-modes 'matlab-shell-mode)
+
+
 ;; Activate on TAB
 (define-key company-active-map [tab] 'company-complete-common-or-cycle)
 (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
 ;; Backends
-(require 'company-auctex)
-(require 'company-math)
 (require 'company-c-headers)
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.2.0/")
 
 (defvar my-company-backends nil
   "A list of my company backends")
 (setq my-company-backends
-      '(company-auctex-labels
-        company-auctex-bibs
-        (company-auctex-macros company-auctex-symbols company-auctex-environments)
-        (company-math-symbols-latex company-math-symbols-unicode)
-        company-ispell
+      '(company-ispell
         (company-semantic
          company-clang company-c-headers)
-        ;;company-matlab-shell
-        company-bbdb
         company-elisp
-        ac-js2-company
         company-nxml
         company-css
-        company-eclim
-        company-xcode
         company-cmake
-        company-capf
         (company-dabbrev-code company-gtags company-etags company-keywords)
-        company-oddmuse
-        company-files
         company-dabbrev
         company-yasnippet))
 (setq company-backends my-company-backends)
