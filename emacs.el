@@ -135,22 +135,27 @@
 (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
 ;; Backends
 (require 'company-c-headers)
+(require 'company-tern) ;; js
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.2.0/")
 
 (defvar my-company-backends nil
   "A list of my company backends")
 (setq my-company-backends
-      '(company-ispell
-        (company-semantic
-         company-clang company-c-headers)
+      '((company-semantic
+        company-clang company-c-headers)
         company-elisp
         company-nxml
         company-css
         company-cmake
         (company-dabbrev-code company-gtags company-etags company-keywords)
         company-dabbrev
-        company-yasnippet))
+        company-yasnippet
+        company-tern))
 (setq company-backends my-company-backends)
+
+(add-hook 'js2-mode-hook (lambda ()
+                         (tern-mode)
+                         (company-mode)))
 
 ;; Python
 (elpy-enable)
@@ -213,7 +218,8 @@
                                   markdown-mode-hook
 				  LaTeX-mode-hook
                                   julia-mode-hook
-				  org-hook)
+				  org-hook
+                                  js-mode-hook)
   "List of hooks of major modes in which a linum mode should be enabled.")
 
 ;; line number configuration
