@@ -5,7 +5,8 @@
                      virtualenvwrapper diff-hl julia-mode
                      julia-repl markdown-mode rainbow-delimiters
                      company company-c-headers elpy
-                     ace-jump-mode expand-region))
+                     ace-jump-mode expand-region
+                     dockerfile-mode))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -114,6 +115,10 @@
 (setq TeX-auto-save t)
 (require 'reftex) ;; cross ref and bib
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; reftex with AUCTeX LaTeX mode
+
+;; Docker
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 ;; Company mode completion
 (require 'company)
