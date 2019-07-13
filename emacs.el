@@ -6,7 +6,7 @@
                      julia-repl markdown-mode rainbow-delimiters
                      company company-c-headers elpy
                      ace-jump-mode expand-region
-                     dockerfile-mode))
+                     go-mode company-go dockerfile-mode))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -142,6 +142,7 @@
 (require 'company-c-headers)
 (require 'company-tern) ;; js
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.2.0/")
+;;(require 'company-go)
 
 (defvar my-company-backends nil
   "A list of my company backends")
@@ -161,6 +162,12 @@
 (add-hook 'js2-mode-hook (lambda ()
                          (tern-mode)
                          (company-mode)))
+
+;; Disable until hang is fixed:
+;; https://github.com/stamblerre/gocode/issues/35
+;(add-hook 'go-mode-hook (lambda ()
+;                        (set (make-local-variable 'company-backends) '(company-go))
+;                        (company-mode)))
 
 ;; Python
 (elpy-enable)
@@ -200,6 +207,14 @@
 (add-hook 'julia-mode-hook 'julia-repl-mode)
 (add-hook 'julia-repl-hook #'julia-repl-use-emacsclient)
 
+;; Enable go mode
+(require 'go-mode)
+;; run fmt on save
+(add-hook 'before-save-hook 'gofmt-before-save)
+;; make def jump sensible
+(add-hook 'go-mode-hook (lambda ()
+                        (local-set-key (kbd "M-.") 'godef-jump)))
+
 ;; display/update images in the buffer after evaluation
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 (add-hook 'org-mode-hook 'org-display-inline-images)
@@ -224,7 +239,8 @@
 				  LaTeX-mode-hook
                                   julia-mode-hook
 				  org-hook
-                                  js-mode-hook)
+                                  js-mode-hook
+                                  go-mode-hook)
   "List of hooks of major modes in which a linum mode should be enabled.")
 
 ;; line number configuration
