@@ -142,7 +142,7 @@
 (require 'company-c-headers)
 (require 'company-tern) ;; js
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.2.0/")
-;;(require 'company-go)
+(require 'company-go)
 
 (defvar my-company-backends nil
   "A list of my company backends")
@@ -156,18 +156,20 @@
         (company-dabbrev-code company-gtags company-etags company-keywords)
         company-dabbrev
         company-yasnippet
-        company-tern))
+        company-tern
+        company-go))
 (setq company-backends my-company-backends)
 
 (add-hook 'js2-mode-hook (lambda ()
                          (tern-mode)
                          (company-mode)))
 
-;; Disable until hang is fixed:
+;; Completion with gocode https://github.com/mdempsky/gocode
+;; Disable modules version until hang is fixed:
 ;; https://github.com/stamblerre/gocode/issues/35
-;(add-hook 'go-mode-hook (lambda ()
-;                        (set (make-local-variable 'company-backends) '(company-go))
-;                        (company-mode)))
+(add-hook 'go-mode-hook (lambda ()
+                        (set (make-local-variable 'company-backends) '(company-go))
+                                                                      (company-mode)))
 
 ;; Python
 (elpy-enable)

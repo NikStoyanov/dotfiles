@@ -138,6 +138,7 @@ PATH=$HOME/Documents/go1.12/bin/:$PATH
 
 # configure GOPATH
 export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # add gmsh to path
 PATH=$HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/:$PATH
