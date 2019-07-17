@@ -6,7 +6,8 @@
                      julia-repl markdown-mode rainbow-delimiters
                      company company-c-headers elpy
                      ace-jump-mode expand-region
-                     go-mode company-go dockerfile-mode))
+                     go-mode company-go dockerfile-mode
+                     company-tern))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -126,7 +127,6 @@
 (setq company-selection-wrap-around t)
 (setq company-tooltip-flip-when-above t)
 (setq company-idle-delay 0.0)
-(add-hook 'after-init-hook 'global-company-mode)
 (require 'company-dabbrev)
 (require 'company-dabbrev-code)
 (setq company-dabbrev-code-everywhere t)
@@ -144,32 +144,20 @@
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.2.0/")
 (require 'company-go)
 
-(defvar my-company-backends nil
-  "A list of my company backends")
-(setq my-company-backends
-      '((company-semantic
-        company-clang company-c-headers)
-        company-elisp
-        company-nxml
-        company-css
-        company-cmake
-        (company-dabbrev-code company-gtags company-etags company-keywords)
-        company-dabbrev
-        company-yasnippet
-        company-tern
-        company-go))
-(setq company-backends my-company-backends)
-
 (add-hook 'js2-mode-hook (lambda ()
-                         (tern-mode)
-                         (company-mode)))
+                           (set (make-local-variable 'company-backends) '(tern-mode))
+                           (company-mode)))
 
 ;; Completion with gocode https://github.com/mdempsky/gocode
 ;; Disable modules version until hang is fixed:
 ;; https://github.com/stamblerre/gocode/issues/35
 (add-hook 'go-mode-hook (lambda ()
-                        (set (make-local-variable 'company-backends) '(company-go))
-                                                                      (company-mode)))
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
+
+(add-hook 'julia-mode-hook (lambda ()
+                             (set (make-local-variable 'company-backends) '(company-dabbrev-code))
+                             (company-mode)))
 
 ;; Python
 (elpy-enable)
