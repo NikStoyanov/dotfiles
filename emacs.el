@@ -7,7 +7,7 @@
                      company company-c-headers elpy
                      ace-jump-mode expand-region
                      go-mode company-go dockerfile-mode
-                     company-tern))
+                     company-tern flycheck))
 
 ;; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
@@ -204,6 +204,8 @@
 ;; make def jump sensible
 (add-hook 'go-mode-hook (lambda ()
                         (local-set-key (kbd "M-.") 'godef-jump)))
+;; lint the code
+(add-hook 'go-mode-hook #'flycheck-mode)
 
 ;; display/update images in the buffer after evaluation
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
