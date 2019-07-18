@@ -40,6 +40,9 @@
 (venv-initialize-eshell)
 (setq venv-location "~/Envs/")
 
+;; change default buffer list to ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 ;; doom theme setup
 (require 'doom-themes)
 (setq doom-themes-enable-bold t
