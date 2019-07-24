@@ -265,6 +265,9 @@
   (scroll-bar-mode -1))
 (toggle-frame-maximized)
 
+;; update buffers upon change from another buffer
+(global-auto-revert-mode t)
+
 ;; Startup buffer
 (setq initial-buffer-choice "~/")
 (add-to-list 'default-frame-alist '(height . 40))
