@@ -342,6 +342,11 @@
 
 ;; configure magit
 (global-set-key (kbd "C-x g") 'magit-status)
+;; Update modeline VC
+;; https://magit.vc/manual/magit/The-mode_002dline-information-isn_0027t-always-up_002dto_002ddate.html
+;; TODO: check cpu usage and if unacceptable then disable VC modeline
+;; (setq vc-handled-backends (delq 'Git vc-handled-backends))
+(setq auto-revert-check-vc-info t)
 
 ;; Git gutter
 (global-diff-hl-mode)
