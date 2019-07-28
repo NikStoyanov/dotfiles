@@ -264,6 +264,11 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
 (toggle-frame-maximized)
+;; On the fly indent change for some packages
+(defun indent-julia (ind)
+  "Change for julia-mode."
+  (interactive "nIndent by: ")
+  (setq julia-indent-offset ind))
 
 ;; update buffers upon change from another buffer
 (global-auto-revert-mode t)
