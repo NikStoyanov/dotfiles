@@ -264,6 +264,9 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
 (toggle-frame-maximized)
+;; highlight evil whitespace
+(require 'whitespace)
+(setq-default show-trailing-whitespace t)
 ;; On the fly indent change for some packages
 (defun indent-julia (ind)
   "Change for julia-mode."
