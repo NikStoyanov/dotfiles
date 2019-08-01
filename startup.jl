@@ -1,12 +1,7 @@
-# Setup Revise
-import Pkg
-let
-    pkgs = ["Revise"]
-    for pkg in pkgs
-    if Base.find_package(pkg) === nothing
-        Pkg.add(pkg)
-    end
+atreplinit() do repl
+    try
+        @eval using Revise
+        @async Revise.wait_steal_repl_backend()
+    catch
     end
 end
-
-using Revise
