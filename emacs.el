@@ -14,7 +14,7 @@
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "https://melpa.milkbox.net/packages/")
+   '("melpa-stable" . "https://stable.melpa.org/packages/")
    t))
 
 ;; activate packages
