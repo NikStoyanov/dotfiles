@@ -21,7 +21,7 @@
 (when (< emacs-major-version 27)
   (package-initialize))
 
-;; fetch the list of available packages 
+;; fetch the list of available packages
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -476,7 +476,7 @@ If invoked with C-u, toggle the setting"
     (thing-at-point 'word))))
 
 (defun words-google ()
-  (interactive)  
+  (interactive)
   (browse-url
    (format
     "https://www.google.com/search?q=%s"
@@ -515,7 +515,7 @@ If invoked with C-u, toggle the setting"
      words-funcs "") ": "))
    (let ((input (read-char-exclusive)))
      (funcall
-      (elt 
+      (elt
        (assoc
         (char-to-string input) words-funcs)
        2))))
@@ -536,7 +536,7 @@ If invoked with C-u, toggle the setting"
 (defun words-atd ()
   "Send paragraph at point to After the deadline for spell and grammar checking."
   (interactive)
-  
+
   (let* ((url-request-method "POST")
          (url-request-data (format
                             "key=some-random-text-&data=%s"
@@ -548,7 +548,7 @@ If invoked with C-u, toggle the setting"
                  (xml-parse-region url-http-end-of-headers (point-max))))
          (results (car xml))
          (errors (xml-get-children results 'error)))
-    
+
     (switch-to-buffer-other-frame "*ATD*")
     (erase-buffer)
     (dolist (err errors)
