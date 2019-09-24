@@ -31,6 +31,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo "Vim setup done"
 
+# setup nvim
+echo "Setting up neovim"
+
+if [ ! -d "$HOME/.config/nvim/init.vim" ]; then
+	mkdir "$HOME/.config/nvim"
+fi
+
+echo "Neovim setup done"
+
 # setup emacs
 echo "Setting up emacs"
 
@@ -66,6 +75,7 @@ ln -sf "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$dotfiles/startup.jl" "$HOME/.julia/config/startup.jl"
 ln -sf "$dotfiles/.Xmodmap" "$HOME/.Xmodmap"
 ln -sf "$dotfiles/.zshrc" "$HOME/.zshrc"
+ln -sf "$dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
