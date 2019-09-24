@@ -11,6 +11,7 @@ rm -rf "$HOME/.bashrc"
 rm -rf "$HOME/.tmux.conf"
 rm -rf "$HOME/.julia/config/startup.jl"
 rm -rf "$HOME/.Xmodmap"
+rm -rf "$HOME/.zshrc"
 
 # setup vim
 echo "Setting up vim"
@@ -64,6 +65,7 @@ ln -sf "$dotfiles/bashrc" "$HOME/.bashrc"
 ln -sf "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$dotfiles/startup.jl" "$HOME/.julia/config/startup.jl"
 ln -sf "$dotfiles/.Xmodmap" "$HOME/.Xmodmap"
+ln -sf "$dotfiles/.zshrc" "$HOME/.zshrc"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
