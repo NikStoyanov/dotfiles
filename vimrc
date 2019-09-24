@@ -34,6 +34,7 @@ Plug 'ncm2/ncm2-path'
 " Syntactic language support
 Plug 'tpope/vim-fugitive'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'fatih/vim-go'
 Plug 'cespare/vim-toml'
 Plug 'airblade/vim-gitgutter'
 Plug 'stephpy/vim-yaml'
@@ -49,15 +50,8 @@ if has('nvim')
     noremap <C-q> :confirm qall<CR>
 end
 
-" deal with colors
-if !has('gui_running')
-  set t_Co=256
-endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
-endif
 " Colors
+set termguicolors
 set background=dark
 colorscheme base16-gruvbox-dark-hard
 hi Normal ctermbg=NONE
@@ -297,16 +291,6 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
-
-function! s:list_cmd()
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
-endfunction
-
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-  \                               'options': '--tiebreak=index'}, <bang>0)
-
 
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
