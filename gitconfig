@@ -9,6 +9,7 @@
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	safecrlf = true
+	editor = nvim
 [merge]
 	tool = nvim -d
 [alias]
