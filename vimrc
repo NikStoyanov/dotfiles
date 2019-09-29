@@ -128,6 +128,7 @@ let g:ale_sign_error = "✖"
 let g:ale_sign_warning = "⚠"
 let g:ale_sign_info = "i"
 let g:ale_sign_hint = "➤"
+let g:LanguageClient_useVirtualText = 0
 
 " Latex
 let g:latex_indent_enabled = 1
