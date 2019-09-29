@@ -116,6 +116,7 @@ let javaScript_fold=0
 
 " Linter
 let g:ale_linters = {'python': ['pyls'], 'go': ['gopls']}
+let g:ale_fixers = {'python': ['autopep8', 'yapf']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 1
