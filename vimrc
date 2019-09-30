@@ -252,7 +252,7 @@ set laststatus=2
 set relativenumber " Relative line numbers
 set number " Also show current absolute line
 set diffopt+=iwhite " No whitespace in vimdiff
-set colorcolumn=100 " and give me a colored column
+set colorcolumn=80 " and give me a colored column
 set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
@@ -365,6 +365,9 @@ endif
 
 " Auto-make less files on save
 autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
+
+au Filetype python source ~/.config/nvim/scripts/spacetab.vim
+au Filetype python set colorcolumn=100
 
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot

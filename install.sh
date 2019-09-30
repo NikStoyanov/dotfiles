@@ -37,6 +37,7 @@ echo "Setting up neovim"
 
 if [ ! -d "$HOME/.config/nvim/init.vim" ]; then
 	mkdir "$HOME/.config/nvim"
+	mkdir "$HOME/.config/nvim/scripts"
 fi
 
 echo "Neovim setup done"
@@ -78,6 +79,7 @@ ln -sf "$dotfiles/startup.jl" "$HOME/.julia/config/startup.jl"
 ln -sf "$dotfiles/.Xmodmap" "$HOME/.Xmodmap"
 ln -sf "$dotfiles/.zshrc" "$HOME/.zshrc"
 ln -sf "$dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
+ln -sf "$dotfiles/nvim/scripts/spacetab.vim" "$HOME/.config/nvim/scripts/spacetab.vim"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
