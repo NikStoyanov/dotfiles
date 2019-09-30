@@ -366,8 +366,12 @@ endif
 " Auto-make less files on save
 autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
 
+" Python style
 au Filetype python source ~/.config/nvim/scripts/spacetab.vim
 au Filetype python set colorcolumn=100
+
+" Go style
+au Filetype go set colorcolumn=100
 
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
