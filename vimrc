@@ -77,9 +77,10 @@ set hidden
 " Language Server
 " Required for operations modifying multiple buffers like rename.
 let g:LanguageClient_serverCommands = {
-    \ 'go': ['gopls'],
-    \ 'python': ['pyls'],
-    \ }
+	\ 'go': ['gopls'],
+	\ 'python': ['pyls'],
+	\ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+	\ }
 
 " Gofmt on save
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
@@ -115,7 +116,11 @@ endif
 let javaScript_fold=0
 
 " Linter
-let g:ale_linters = {'python': ['pyls'], 'go': ['gopls']}
+let g:ale_linters = {
+	\ 'python': ['pyls'],
+	\ 'go': ['gopls'],
+	\ 'javacript': ['eslint'],
+	\ }
 let g:ale_fixers = {'python': ['autopep8', 'yapf']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
