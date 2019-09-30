@@ -373,6 +373,9 @@ au Filetype python set colorcolumn=100
 " Go style
 au Filetype go set colorcolumn=100
 
+" Javascript style
+au Filetype javascript set colorcolumn=100
+
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
 autocmd BufRead *.md set filetype=markdown
