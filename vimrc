@@ -32,6 +32,7 @@ Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 
 " Syntactic language support
+Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'fatih/vim-go'
@@ -120,6 +121,7 @@ let g:ale_linters = {
 	\ 'python': ['pyls'],
 	\ 'go': ['gopls'],
 	\ 'javacript': ['eslint'],
+	\ 'rust': ['rls'],
 	\ }
 let g:ale_fixers = {'python': ['autopep8', 'yapf']}
 let g:ale_lint_on_text_changed = 'never'
@@ -135,6 +137,16 @@ let g:ale_sign_warning = "⚠"
 let g:ale_sign_info = "i"
 let g:ale_sign_hint = "➤"
 let g:LanguageClient_useVirtualText = 0
+
+" Ale for rust
+let g:ale_rust_rls_config = {
+	\ 'rust': {
+		\ 'all_targets': 1,
+		\ 'build_on_save': 1,
+		\ 'clippy_preference': 'on'
+	\ }
+	\ }
+let g:ale_rust_rls_toolchain = ''
 
 " Latex
 let g:latex_indent_enabled = 1
@@ -158,6 +170,14 @@ set completeopt=noinsert,menuone,noselect
 " and don't hijack my enter key
 inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
 inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+
+" Rust
+let g:rustfmt_command = "rustfmt"
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
 " Golang
 let g:go_play_open_browser = 0
@@ -375,6 +395,10 @@ au Filetype go set colorcolumn=100
 
 " Javascript style
 au Filetype javascript set colorcolumn=100
+
+" Rust style
+au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
+au Filetype rust set colorcolumn=100
 
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
