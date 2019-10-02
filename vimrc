@@ -51,6 +51,9 @@ if has('nvim')
     noremap <C-q> :confirm qall<CR>
 end
 
+" Remap leader
+let mapleader = "\<Space>"
+
 " Colors
 set termguicolors
 set background=dark
