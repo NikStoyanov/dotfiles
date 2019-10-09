@@ -403,6 +403,11 @@ au Filetype javascript set colorcolumn=100
 au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
 au Filetype rust set colorcolumn=100
 
+" Julia style
+" https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md
+au Filetype julia source ~/.config/nvim/scripts/spacetab.vim
+au Filetype julia set colorcolumn=92
+
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
 autocmd BufRead *.md set filetype=markdown
