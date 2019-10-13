@@ -12,7 +12,7 @@ rm -rf "$HOME/.bashrc"
 rm -rf "$HOME/.tmux.conf"
 rm -rf "$HOME/.julia/config/startup.jl"
 rm -rf "$HOME/.Xmodmap"
-rm -rf "$HOME/.zshrc"
+rm "$HOME/.config/fish/config.fish"
 
 # setup vim
 echo "Setting up vim"
@@ -77,9 +77,9 @@ ln -sf "$dotfiles/bashrc" "$HOME/.bashrc"
 ln -sf "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$dotfiles/startup.jl" "$HOME/.julia/config/startup.jl"
 ln -sf "$dotfiles/.Xmodmap" "$HOME/.Xmodmap"
-ln -sf "$dotfiles/.zshrc" "$HOME/.zshrc"
 ln -sf "$dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
 ln -sf "$dotfiles/nvim/scripts/spacetab.vim" "$HOME/.config/nvim/scripts/spacetab.vim"
+ln -sf "$dotfiles/config.fish" "$HOME/.config/fish/config.fish"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
