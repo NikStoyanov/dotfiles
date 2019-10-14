@@ -28,6 +28,7 @@ function fish_prompt
 	end
 
 	if set -q VIRTUAL_ENV
+		set_color magenta
 		echo -n -s " [" (basename "$VIRTUAL_ENV") "]" (set_color normal)
 	end
 
