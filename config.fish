@@ -92,6 +92,14 @@ function fish_greeting
 			sed 's/^/\t/' \
 		)
 	echo
+
+	if test -s ~/todo
+		set_color red
+		cat ~/todo | sed 's/^/ /'
+		echo
+	end
+
+	set_color normal
 end
 
 # Fish should not add things to clipboard when killing
