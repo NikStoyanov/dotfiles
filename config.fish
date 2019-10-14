@@ -22,6 +22,11 @@ function fish_prompt
 		set_color yellow
 		echo -n (basename $PWD)
 	end
+
+	if set -q VIRTUAL_ENV
+		echo -n -s " [" (basename "$VIRTUAL_ENV") "]" (set_color normal)
+	end
+
 	set_color green
 	printf '%s ' (__fish_git_prompt)
 	set_color red
