@@ -6,6 +6,10 @@ abbr -a vim 'nvim'
 
 set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin
 
+if status --is-interactive
+	tmux ^ /dev/null; and exec true
+end
+
 # Weather
 function weather
   curl -s wttr.in/$argv[1]
