@@ -42,6 +42,15 @@ fi
 
 echo "Neovim setup done"
 
+echo "Setting up alacritty"
+
+# setup alacritty
+if [ ! -d "$HOME/.config/alacritty/alacritty.yml"]; then
+	mkdir "$HOME/.config/alacritty"
+fi
+
+echo "Alacritty setup done"
+
 # setup emacs
 echo "Setting up emacs"
 
@@ -80,6 +89,7 @@ ln -sf "$dotfiles/.Xmodmap" "$HOME/.Xmodmap"
 ln -sf "$dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
 ln -sf "$dotfiles/nvim/scripts/spacetab.vim" "$HOME/.config/nvim/scripts/spacetab.vim"
 ln -sf "$dotfiles/config.fish" "$HOME/.config/fish/config.fish"
+ln -sf "$dotfiles/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
