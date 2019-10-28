@@ -124,6 +124,9 @@ set PATH $PATH $HOME/git/emacs/src/
 # Exa
 set PATH $PATH $HOME/Documents/exa/target/release/
 
+# Custom bin scripts
+set PATH $PATH $HOME/bin/
+
 # Fish virtualenv
 eval (python3 -m virtualfish)
 
