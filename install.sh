@@ -14,6 +14,7 @@ rm -rf "$HOME/.julia/config/startup.jl"
 rm -rf "$HOME/.Xmodmap"
 rm "$HOME/.config/fish/config.fish"
 rm -rf "$HOME/.config/i3/config"
+rm -rf "$HOME/.config/polybar"
 
 # setup vim
 echo "Setting up vim"
@@ -57,6 +58,11 @@ if [ ! -d "$HOME/.config/i3/"]; then
 	mkdir "$HOME/.config/i3"
 fi
 
+# setup Polybar
+if [! -d "$HOME/.config/polybar/"]; then
+	mkdir "$HOME/.config/polybar"
+fi
+
 # setup emacs
 echo "Setting up emacs"
 
@@ -97,6 +103,8 @@ ln -sf "$dotfiles/nvim/scripts/spacetab.vim" "$HOME/.config/nvim/scripts/spaceta
 ln -sf "$dotfiles/config.fish" "$HOME/.config/fish/config.fish"
 ln -sf "$dotfiles/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 ln -sf "$dotfiles/i3/config" "$HOME/.config/i3/config"
+ln -sf "$dotfiles/polybar/config" "$HOME/.config/polybar/config"
+ln -sf "$dotfiles/polybar/launch.sh" "$HOME/.config/polybar/launch.sh"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
