@@ -13,6 +13,7 @@ rm -rf "$HOME/.tmux.conf"
 rm -rf "$HOME/.julia/config/startup.jl"
 rm -rf "$HOME/.Xmodmap"
 rm "$HOME/.config/fish/config.fish"
+rm -rf "$HOME/.config/i3/config"
 
 # setup vim
 echo "Setting up vim"
@@ -50,6 +51,11 @@ if [ ! -d "$HOME/.config/alacritty/alacritty.yml"]; then
 fi
 
 echo "Alacritty setup done"
+
+# setup i3
+if [ ! -d "$HOME/.config/i3/"]; then
+	mkdir "$HOME/.config/i3"
+fi
 
 # setup emacs
 echo "Setting up emacs"
@@ -90,6 +96,7 @@ ln -sf "$dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
 ln -sf "$dotfiles/nvim/scripts/spacetab.vim" "$HOME/.config/nvim/scripts/spacetab.vim"
 ln -sf "$dotfiles/config.fish" "$HOME/.config/fish/config.fish"
 ln -sf "$dotfiles/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+ln -sf "$dotfiles/i3/config" "$HOME/.config/i3/config"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
