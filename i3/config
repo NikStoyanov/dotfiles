@@ -149,6 +149,9 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 
+# Start network manager display
+exec nm-applet
+
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
