@@ -111,6 +111,7 @@ ln -sf "$dotfiles/i3/config" "$HOME/.config/i3/config"
 ln -sf "$dotfiles/polybar/config" "$HOME/.config/polybar/config"
 ln -sf "$dotfiles/polybar/launch.sh" "$HOME/.config/polybar/launch.sh"
 ln -sf "$dotfiles/bin/monitor-plug.sh" "$HOME/bin/monitor-plug.sh"
+ln -sf "$dotfiles/bin/brightness.sh" "$HOME/bin/brightness.sh"
 
 # sync scripts
 cp "$dotfiles/sync/gsync.sh" "$HOME/gsync.sh"
