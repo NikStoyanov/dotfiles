@@ -28,7 +28,7 @@ font-1 = "Noto Sans Mono:size=10;1"
 font-2 = "Noto Sans Symbols:size=10;1"
 font-3 = "Noto Sans Symbols2:size=10;1"
 
-modules-left = date ewmh xwindow
+modules-left = date i3 xwindow
 modules-center =
 modules-right = github eth1 eth2 wlan cpu battery backlight pulseaudio
 
@@ -42,24 +42,6 @@ margin-top = 0
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-
-[module/ewmh]
-type = internal/xworkspaces
-pin-workspaces = false
-enable-click = false
-enable-scroll = false
-
-label-active = " %name% "
-label-active-underline = #fba922
-
-label-occupied = " %name% "
-label-occupied-foreground = #ffaa00
-
-label-urgent = " %name% "
-label-urgent-underline = #9b0a20
-
-label-empty = " %name% "
-label-empty-foreground = #555555
 
 [module/cpu]
 type = internal/cpu
@@ -155,51 +137,32 @@ screenchange-reload = true
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
+format = <label>
+label = BL %percentage%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
-; If not, uses default sink
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
-
-; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
-; Default: true
 use-ui-max = true
-
-; Interval for volume increase/decrease (in percent points)
-; Default: 5
 interval = 5
-; Available tags:
-;   <label-volume> (default)
-;   <ramp-volume>
-;   <bar-volume>
-format-volume = <ramp-volume> <label-volume>
-
-; Available tags:
-;   <label-muted> (default)
-;   <ramp-volume>
-;   <bar-volume>
-;format-muted = <label-muted>
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels% (unreleased)
-;label-volume = %percentage%%
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels% (unreleased)
-label-muted = 🔇 muted
+format-volume = S <label-volume>
+label-muted = muted
 label-muted-foreground = #666
-
-; Only applies if <ramp-volume> is used
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
 
 [module/i3]
 type = internal/i3
-pin-workspaces = true
 strip-wsnumbers = true
 index-sort = true
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+
+label-focused = " %name% "
+label-focused-underline = #fba922
+label-focused-foreground = #ffffff
+
+label-unfocused = " %name% "
+label-unfocused-foreground = #555555
+
+label-urgent = " %name% "
+label-urgent-underline = #9b0a20
