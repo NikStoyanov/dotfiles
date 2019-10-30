@@ -152,6 +152,9 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 # Start network manager display
 exec nm-applet
 
+# Setup keyboard bindings
+exec xmodmap ~/.Xmodmap
+
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
