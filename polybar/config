@@ -30,7 +30,7 @@ font-3 = "Noto Sans Symbols2:size=10;1"
 
 modules-left = date i3 xwindow
 modules-center =
-modules-right = github eth1 eth2 wlan cpu battery backlight pulseaudio
+modules-right = eth1 eth2 wlan cpu battery github backlight pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -61,7 +61,7 @@ label = %percentage_used:2%%
 type = internal/github
 token = ${file:/home/nik/.config/github/notification.token}
 empty-notifications = false
-label = %{u#0099ff +u} 📫 %{u-}
+label = %{u#0099ff +u} GH %{u-}
 interval = 10
 
 [module/wlan]
@@ -145,14 +145,14 @@ screenchange-reload = true
 type = internal/backlight
 card = intel_backlight
 format = <label>
-label = BL %percentage%
+label = %{u#0099ff +u} BL %percentage% %{u-}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
 use-ui-max = true
 interval = 5
-format-volume = S <label-volume>
+format-volume = %{u#0099ff +u} S <label-volume> %{u-}
 label-muted = muted
 label-muted-foreground = #666
 
