@@ -61,7 +61,7 @@ label = %percentage_used:2%%
 type = internal/github
 token = ${file:/home/nik/.config/github/notification.token}
 empty-notifications = false
-label = %{u#0099ff +u} GH %{u-}
+label = %{u#ff9900 +u} GH %{u-}
 interval = 10
 
 [module/wlan]
@@ -145,7 +145,7 @@ screenchange-reload = true
 type = internal/backlight
 card = intel_backlight
 format = <label>
-label = %{u#0099ff +u} BL %percentage% %{u-}
+label = %{u#0099ff +u} BL %percentage%% %{u-}
 
 [module/pulseaudio]
 type = internal/pulseaudio
