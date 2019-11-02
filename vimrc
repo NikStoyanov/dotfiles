@@ -1,3 +1,4 @@
+set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 
 " VIM enhancements
