@@ -48,10 +48,8 @@ else
 	else
 		edid=$(/usr/bin/cat /sys/class/drm/card0-$DEVC/edid | /usr/bin/sha512sum - | /usr/bin/sed 's/\s*-$//')
 
-		background_primary="wide"
-		background_secondary="wide"
 		laptop_res="1366x768"
-		pos="above --rotate normal"
+		pos="primary --rotate normal --left-of"
 
 		case "$edid" in
 			"82bbccd669dc0773604295b051d8339382d8544cab289ec0a4b3fe874d8d5796590fcf46a9ef8b1dc5755b0c0f07806d0c975fc2b755356eedc5720b48a2ba57")
