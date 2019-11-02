@@ -50,6 +50,10 @@ else
 	abbr -a lll 'ls -la'
 end
 
+if test -f /usr/share/autojump/autojump.fish;
+	source /usr/share/autojump/autojump.fish;
+end
+
 function fish_greeting
 	echo
 	echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;32m"$0"\\\\e[0m"}')
