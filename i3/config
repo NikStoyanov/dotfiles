@@ -149,6 +149,10 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 
+# Assign certain programs to open in a workspace
+assign [class="(?i)Firefox"] $ws1
+assign [class="(?i)nautilus"] $ws5
+
 # Start network manager display
 exec nm-applet
 
