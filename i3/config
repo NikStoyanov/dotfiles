@@ -29,42 +29,47 @@ font pango:monospace 8
 # Wallpaper black
 exec --no-startup-id xsetroot -solid "#000000"
 
+# Setup monitor startup
+exec ~/bin/monitor-plug.sh
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# Start a terminal
 bindsym $mod+Return exec alacritty
 
-# lock screen
-bindsym --release $mod+l exec slock
+# Start firefox
+bindsym $mod+shift+Return exec firefox
 
-# kill focused window
-bindsym $mod+Shift+q kill
+# Lock screen
+bindsym --release $mod+shift+l exec slock
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# Lock and suspend
+bindsym $mod+shift+s exec --no-startup-id "sh -c 'slock && sleep 0.5 && sudo /usr/sbin/pm-suspend'"
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+# Kill focused window
+bindsym $mod+shift+q kill
 
-# alternatively, you can use the cursor keys:
+# Start ulauncher
+bindsym $mod+d exec ulauncher
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -73,10 +78,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+% split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+" split v
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -151,6 +156,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 
 # Assign certain programs to open in a workspace
 assign [class="(?i)Firefox"] $ws1
+assign [class="(?i)Google-chrome"] $ws3
 assign [class="(?i)nautilus"] $ws5
 
 # Start network manager display
