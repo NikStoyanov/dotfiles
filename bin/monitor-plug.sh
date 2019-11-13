@@ -61,4 +61,4 @@ else
 	fi
 fi
 
-~/.config/polybar/launch.sh
+~/.config/polybar/launch.sh 2>/dev/null
