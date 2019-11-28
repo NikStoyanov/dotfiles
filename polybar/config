@@ -168,7 +168,7 @@ label-focused-underline = #fba922
 label-focused-foreground = #ffffff
 
 label-unfocused = " %name% "
-label-unfocused-foreground = #555555
+label-unfocused-foreground = #969696
 
 label-urgent = " %name% "
 label-urgent-underline = #9b0a20
