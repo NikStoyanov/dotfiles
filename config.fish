@@ -117,7 +117,7 @@ set GOPATH $GOPATH $HOME/go
 set PATH $PATH $GOPATH/bin/
 
 # Julia
-set PATH $PATH $HOME/Documents/julia-1.1.1/bin/
+set PATH $PATH $HOME/Documents/julia-1.3.1/bin/
 
 # Gmsh
 set PATH $PATH $HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/
