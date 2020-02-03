@@ -4,4 +4,10 @@ atreplinit() do repl
         @async Revise.wait_steal_repl_backend()
     catch
     end
+
+    try
+        @eval using OhMyREPL
+    catch e
+        @warn "error while importing OhMyREPL" e
+    end
 end
