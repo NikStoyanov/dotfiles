@@ -142,3 +142,5 @@ export PATH=$PATH:$GOPATH/bin
 
 # add gmsh to path
 PATH=$HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/:$PATH
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
