@@ -409,6 +409,10 @@ au Filetype rust set colorcolumn=100
 au Filetype julia source ~/.config/nvim/scripts/spacetab.vim
 au Filetype julia set colorcolumn=92
 
+" C++ style
+au Filetype cpp source ~/.config/nvim/scripts/spacetab.vim
+au Filetype cpp set colorcolumn=80
+
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
 autocmd BufRead *.md set filetype=markdown
