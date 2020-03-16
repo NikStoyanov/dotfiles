@@ -11,4 +11,11 @@ atreplinit() do repl
     catch e
         @warn "error while importing OhMyREPL" e
     end
+
+    function workspace()
+        atexit() do
+            run(`$(Base.julia_cmd())`)
+        end
+        exit()
+    end
 end
