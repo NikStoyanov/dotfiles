@@ -134,6 +134,12 @@ set PATH $PATH $HOME/bin/
 # Fish virtualenv
 eval (python3 -m virtualfish)
 
+# Python, vim, virtualfish
+# https://vi.stackexchange.com/questions/7644/
+if test -e $VIRTUAL_ENV
+	vf activate $VIRTUAL_ENV/bin/activate.fish
+end
+
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
