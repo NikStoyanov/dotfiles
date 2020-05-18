@@ -189,7 +189,9 @@ let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/go/")
 
-" Python
+" Python setup for a separate vf for the pynvim module and explicitly load to
+" avoid install in each new vf.
+" pip install pynvim
 let g:python3_host_prog = expand('~/.virtualenvs/pynvim/bin/python')
 
 " =============================================================================
