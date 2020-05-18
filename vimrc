@@ -315,7 +315,7 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 
 " <leader>s for Rg search
 " https://github.com/BurntSushi/ripgrep
-noremap <leader>s :Rg 
+noremap <leader>s :Rg
 let g:gzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -409,6 +409,9 @@ au Filetype rust set colorcolumn=100
 " https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md
 au Filetype julia source ~/.config/nvim/scripts/spacetab.vim
 au Filetype julia set colorcolumn=92
+" Change latex tab completion to remove interference
+" https://github.com/JuliaEditorSupport/julia-vim/pull/166
+let g:latex_to_unicode_keymap = 1
 
 " C++ style
 au Filetype cpp source ~/.config/nvim/scripts/spacetab.vim
