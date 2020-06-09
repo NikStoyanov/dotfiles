@@ -160,7 +160,7 @@ type = internal/i3
 strip-wsnumbers = true
 index-sort = true
 pin-workspaces = false
-enable-click = false
+enable-click = true
 enable-scroll = false
 
 label-focused = " %name% "
