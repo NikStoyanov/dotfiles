@@ -440,9 +440,10 @@ au Filetype rust set colorcolumn=100
 " https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md
 au Filetype julia source ~/.config/nvim/scripts/spacetab.vim
 au Filetype julia set colorcolumn=92
-" Change latex tab completion to remove interference
-" https://github.com/JuliaEditorSupport/julia-vim/pull/166
-let g:latex_to_unicode_keymap = 1
+" Default tab latex completion is broken with CoC tab inserts.
+" Auto insert them instead.
+let g:latex_to_unicode_tab = 0
+let g:latex_to_unicode_auto = 1
 
 " C++ style
 au Filetype cpp source ~/.config/nvim/scripts/spacetab.vim
