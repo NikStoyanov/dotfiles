@@ -29,9 +29,6 @@ font pango:monospace 8
 # Wallpaper black
 exec --no-startup-id xsetroot -solid "#000000"
 
-# Setup monitor startup
-exec ~/bin/monitor-plug.sh
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -170,6 +167,9 @@ exec xmodmap ~/.Xmodmap
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Setup monitor startup
+exec ~/bin/monitor-plug.sh single
 
 # Remove border and split separator
 for_window [class="^.*"] border pixel 0
