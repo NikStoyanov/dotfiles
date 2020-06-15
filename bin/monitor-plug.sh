@@ -53,14 +53,12 @@ else
 
 		case "$edid" in
 			"82bbccd669dc0773604295b051d8339382d8544cab289ec0a4b3fe874d8d5796590fcf46a9ef8b1dc5755b0c0f07806d0c975fc2b755356eedc5720b48a2ba57")
-				post="primary --rotate normal"
 				/usr/bin/xrandr --output eDP-1 --off
-				/usr/bin/xrandr --output $DEV --mode 1920x1080 --$pos
+				/usr/bin/xrandr --output $DEV --mode 1920x1080
 				;;
 			"cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e")
-				post="primary --rotate normal"
 				/usr/bin/xrandr --output eDP-1 --off
-				/usr/bin/xrandr --output $DEV --mode 1920x1080 --$pos
+				/usr/bin/xrandr --output $DEV --mode 1920x1080
 				;;
 		esac
 		sleep 1
