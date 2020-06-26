@@ -156,7 +156,6 @@ bindsym $mod+Ctrl+less move workspace to output left
 
 # Assign certain programs to open in a workspace
 assign [class="(?i)Firefox"] $ws1
-assign [class="(?i)Google-chrome"] $ws3
 assign [class="(?i)nautilus"] $ws5
 
 # Start network manager display
