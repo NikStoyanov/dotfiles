@@ -32,6 +32,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -171,7 +172,10 @@ set printencoding=utf-8
 set printoptions=paper:letter
 " Always draw sign column. Prevent buffer moving when adding/deleting sign.
 set signcolumn=yes
+
+" Spellcheck
 autocmd FileType rst,latex,tex,md,markdown setlocal spell
+autocmd BufRead /tmp/neomutt-* setlocal spell
 
 " Settings needed for .lvimrc
 set exrc
