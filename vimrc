@@ -139,10 +139,8 @@ set cmdheight=2
 set updatetime=300
 
 " Golang
-let g:go_play_open_browser = 0
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
-let g:go_bin_path = expand("~/go/")
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " Python setup for a separate vf for the pynvim module and explicitly load to
 " avoid install in each new vf.
