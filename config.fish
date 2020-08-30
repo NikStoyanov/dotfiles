@@ -111,14 +111,14 @@ end
 # See https://github.com/fish-shell/fish-shell/issues/772
 set FISH_CLIPBOARD_CMD "cat"
 
-# TODO: these need to go into /opt
 # Go
-set PATH $PATH $HOME/Documents/go1.12/bin/
+set PATH $PATH /opt/go1.14/bin/
 set GOPATH $GOPATH $HOME/go
 set PATH $PATH $GOPATH/bin/
 
 # Julia
-set PATH $PATH $HOME/Documents/julia-1.3.1/bin/
+abbr -a jl1.3 /opt/julia-1.3.1/bin/julia
+abbr -a jl1.5 /opt/julia-1.5.1/bin/julia
 
 # Gmsh
 set PATH $PATH $HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/
@@ -127,7 +127,7 @@ set PATH $PATH $HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/
 set PATH $PATH $HOME/git/emacs/src/
 
 # Exa
-set PATH $PATH $HOME/Documents/exa/target/release/
+set PATH $PATH /opt/exa/target/release/
 
 # Custom bin scripts
 set PATH $PATH $HOME/bin/
