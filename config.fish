@@ -12,7 +12,7 @@ end
 
 # Weather
 function weather
-  curl -s wttr.in/$argv[1]
+	curl -s wttr.in/$argv[1]
 end
 
 function fish_prompt
