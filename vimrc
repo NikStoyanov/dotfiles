@@ -59,8 +59,6 @@ let base16colorspace=256
 colorscheme base16-gruvbox-dark-hard
 hi Normal ctermbg=NONE
 syntax on
-" Brighter comments
-call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
