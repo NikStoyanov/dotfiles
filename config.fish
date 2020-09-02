@@ -119,6 +119,7 @@ set PATH $PATH $GOPATH/bin/
 # Julia
 abbr -a jl1.3 /opt/julia-1.3.1/bin/julia
 abbr -a jl /opt/julia-1.5.1/bin/julia
+abbr -a julia /opt/julia-1.5.1/bin/julia
 
 # Gmsh
 set PATH $PATH $HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/
