@@ -324,6 +324,9 @@ noremap M :!make -k -j4<cr>
 map <F1> <Esc>
 imap <F1> <Esc>
 
+" Yank current file path into system clipboard
+noremap <silent> <F4> :let @+=expand("%:p")<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 'Smart' nevigation
 " Use tab for trigger completion with characters ahead and navigate.
