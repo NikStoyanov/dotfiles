@@ -152,6 +152,7 @@ let g:python3_host_prog = expand('~/.virtualenvs/pynvim/bin/python')
 " =============================================================================
 filetype plugin indent on
 set autoindent
+set autoread
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
 set scrolloff=2
