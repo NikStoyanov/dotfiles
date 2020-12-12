@@ -149,6 +149,10 @@ if test -e $VIRTUAL_ENV
 	vf activate $VIRTUAL_ENV/bin/activate.fish
 end
 
+# Setup python versions
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
