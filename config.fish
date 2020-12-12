@@ -109,6 +109,11 @@ function fish_greeting
 	set_color normal
 end
 
+# External IP address into clipboard
+function myip
+	curl ifconfig.me | xclip -selection c
+end
+
 # Fish should not add things to clipboard when killing
 # See https://github.com/fish-shell/fish-shell/issues/772
 set FISH_CLIPBOARD_CMD "cat"
