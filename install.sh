@@ -73,6 +73,8 @@ if [! -d "$HOME/bin/"]; then
 fi
 ln -sf "$dotfiles/bin/monitor-plug.sh" "$HOME/bin/monitor-plug.sh"
 ln -sf "$dotfiles/bin/brightness.sh" "$HOME/bin/brightness.sh"
+ln -sf "$dotfiles/bin/shutdown.sh" "$HOME/bin/shutdown.sh"
+ln -sf "$dotfiles/bin/suspend.sh" "$HOME/bin/suspend.sh"
 echo "Custom bins setup done"
 
 # Setup julia
