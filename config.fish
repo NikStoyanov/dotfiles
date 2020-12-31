@@ -127,19 +127,6 @@ abbr -a julia /opt/julia-1.5.3/bin/julia
 # Custom bin scripts
 set PATH $PATH $HOME/bin/
 
-# Fish virtualenv
-eval (python3 -m virtualfish)
-
-# Python, vim, virtualfish
-# https://vi.stackexchange.com/questions/7644/
-if test -e $VIRTUAL_ENV
-	vf activate $VIRTUAL_ENV/bin/activate.fish
-end
-
-# Setup python versions
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
@@ -157,6 +144,19 @@ setenv LESS_TERMCAP_so \e'[38;5;246m'    # begin standout-mode - info box
 setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
-# Setup ruby
-# https://rvm.io/integration/fish
-rvm default
+# pyenv
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+if status is-login
+    pyenv init - --no-rehash fish | source
+    and funcsave pyenv
+    and sh -c 'command pyenv rehash 2>/dev/null &'
+end
+
+# rbenv
+set -Ux fish_user_paths $HOME/.rbenv/bin $fish_user_paths
+if status is-login
+    rbenv init - --no-rehash fish | source
+    and funcsave rbenv
+    and sh -c 'command rbenv rehash 2>/dev/null &'
+end
