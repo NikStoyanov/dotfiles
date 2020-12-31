@@ -14,7 +14,8 @@ rm -rf "$HOME/.julia/config/startup.jl"
 rm -rf "$HOME/.Xmodmap"
 rm "$HOME/.config/fish/config.fish"
 rm -rf "$HOME/.config/i3/config"
-rm -rf "$HOME/.config/polybar"
+rm -rf "$HOME/.config/polybar/config"
+rm -rf "$HOME/.config/polybar/launch.sh"
 
 # Setup vim
 echo "Setting up vim"
@@ -75,6 +76,7 @@ ln -sf "$dotfiles/bin/monitor-plug.sh" "$HOME/bin/monitor-plug.sh"
 ln -sf "$dotfiles/bin/brightness.sh" "$HOME/bin/brightness.sh"
 ln -sf "$dotfiles/bin/shutdown.sh" "$HOME/bin/shutdown.sh"
 ln -sf "$dotfiles/bin/suspend.sh" "$HOME/bin/suspend.sh"
+ln -sf "$dotfiles/bin/dropbox.sh" "$HOME/bin/dropbox.sh"
 echo "Custom bins setup done"
 
 # Setup julia
