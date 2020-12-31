@@ -4,9 +4,9 @@ abbr -a gah 'git stash; and git pull --rebase; and git stash pop'
 abbr -a vimdiff 'nvim -d'
 abbr -a vim 'nvim'
 abbr -a vi 'nvim'
-abbr -a cat 'bat'
+abbr -a cat 'batcat'
 
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.locale/bin
 
 if status --is-interactive
 	tmux ^ /dev/null; and exec true
@@ -50,10 +50,6 @@ else
 	abbr -a l 'ls'
 	abbr -a ll 'ls -l'
 	abbr -a lll 'ls -la'
-end
-
-if test -f /usr/share/autojump/autojump.fish;
-	source /usr/share/autojump/autojump.fish;
 end
 
 function fish_greeting
@@ -125,17 +121,8 @@ set PATH $PATH $GOPATH/bin/
 
 # Julia
 abbr -a jl1.3 /opt/julia-1.3.1/bin/julia
-abbr -a jl /opt/julia-1.5.1/bin/julia
-abbr -a julia /opt/julia-1.5.1/bin/julia
-
-# Gmsh
-set PATH $PATH $HOME/Documents/gmsh/gmsh-4.2.2-Linux64/bin/
-
-# Emacs
-set PATH $PATH $HOME/git/emacs/src/
-
-# Exa
-set PATH $PATH /opt/exa/target/release/
+abbr -a jl /opt/julia-1.5.3/bin/julia
+abbr -a julia /opt/julia-1.5.3/bin/julia
 
 # Custom bin scripts
 set PATH $PATH $HOME/bin/
