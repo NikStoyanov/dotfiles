@@ -248,6 +248,9 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 set nolist
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 
+" No FZF floating window
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset': 1, 'border': 'horizontal' } }
+
 " =============================================================================
 " # Keyboard shortcuts
 " =============================================================================
