@@ -4,13 +4,9 @@ abbr -a gah 'git stash; and git pull --rebase; and git stash pop'
 abbr -a vimdiff 'nvim -d'
 abbr -a vim 'nvim'
 abbr -a vi 'nvim'
-abbr -a cat 'batcat'
+abbr -a cat 'bat'
 
 set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.locale/bin
-
-if status --is-interactive
-	tmux ^ /dev/null; and exec true
-end
 
 # Weather
 function weather
