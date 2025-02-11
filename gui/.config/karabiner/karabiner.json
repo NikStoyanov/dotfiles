@@ -4,20 +4,43 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Browsers",
+                        "description": "Caps to command other than alacritty (tmux)",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.mozilla\\.firefox",
-                                            "^com\\.apple\\.Safari"
+                                            "^org\\.alacritty"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_command" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Caps+a to ctrl+a for alacritty (tmux), Caps to command for all else",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "from": { "key_code": "left_control" },
-                                "to": [{ "key_code": "left_command" }],
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
                                 "type": "basic"
                             }
                         ]
