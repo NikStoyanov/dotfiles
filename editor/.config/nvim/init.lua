@@ -103,11 +103,12 @@ vim.keymap.set('n', '<C-h>', '<cmd>nohlsearch<cr>')
 -- Jump to start and end of line using the home row keys
 vim.keymap.set('', 'H', '^')
 vim.keymap.set('', 'L', '$')
--- Neat X clipboard integration
--- <leader>p will paste clipboard into buffer
--- <leader>c will copy entire buffer into clipboard
-vim.keymap.set('n', '<leader>p', '<cmd>read !wl-paste<cr>')
-vim.keymap.set('n', '<leader>c', '<cmd>w !wl-copy<cr><cr>')
+-- Copy in visual mode
+vim.keymap.set('v', '<C-c>', '"+y', { noremap = true })
+-- Paste in normal mode
+vim.keymap.set('n', '<C-v>', '"+P', { noremap = true })
+-- Paste in insert mode
+vim.keymap.set('i', '<C-v>', '<C-r>+', { noremap = true })
 -- <leader><leader> toggles between buffers
 vim.keymap.set('n', '<leader><leader>', '<c-^>')
 -- <leader>, shows/hides hidden characters
@@ -225,6 +226,38 @@ require("lazy").setup({
 				]],
 				true
 			)
+		end
+	},
+	-- fzf support for ^p
+	{
+		'junegunn/fzf',
+		dependencies = {
+			'junegunn/fzf.vim'
+		},
+		build = function()
+			vim.fn['fzf#install']()
+		end,
+		config = function()
+			-- stop putting a giant window over my editor
+			vim.g.fzf_layout = { down = '~20%' }
+			-- when using :Files, pass the file list through
+			--
+			--   https://github.com/jonhoo/proximity-sort
+			--
+			-- to prefer files closer to the current file.
+			function list_cmd()
+				local base = vim.fn.fnamemodify(vim.fn.expand('%'), ':h:.:S')
+				if base == '.' then
+					-- if there is no current file,
+					-- proximity-sort can't do its thing
+					return 'fd --hidden --type file --follow'
+				else
+					return vim.fn.printf('fd --hidden --type file --follow | proximity-sort %s', vim.fn.shellescape(vim.fn.expand('%')))
+				end
+			end
+			vim.api.nvim_create_user_command('Files', function(arg)
+				vim.fn['fzf#vim#files'](arg.qargs, { source = list_cmd(), options = '--scheme=path --tiebreak=index' }, arg.bang)
+			end, { bang = true, nargs = '?', complete = "dir" })
 		end
 	}
 })
