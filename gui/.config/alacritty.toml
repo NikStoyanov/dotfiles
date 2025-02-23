@@ -68,3 +68,6 @@ mods = "Alt"
 
 [scrolling]
 history = 0
+
+[window]
+startup_mode = "Maximized"
