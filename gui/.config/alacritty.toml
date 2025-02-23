@@ -71,3 +71,4 @@ history = 0
 
 [window]
 startup_mode = "Maximized"
+padding = { x = 3, y = 3 }
