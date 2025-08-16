@@ -6,7 +6,13 @@ abbr -a vim 'nvim'
 abbr -a vi 'nvim'
 abbr -a cat 'bat'
 
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.locale/bin
+set -x GOPATH $HOME/go
+
+set -U fish_user_paths /usr/local/sbin /usr/bin /bin ~/.locale/bin $HOME/go/bin
+
+set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+
+fish_add_path (python3 -c "import site; print(site.USER_BASE)")/bin
 
 # Weather
 function weather
@@ -56,6 +62,9 @@ end
 # Fish should not add things to clipboard when killing
 # See https://github.com/fish-shell/fish-shell/issues/772
 set FISH_CLIPBOARD_CMD "cat"
+
+# I love to quit and have the text I care about left for me on the screen
+set BAT_PAGER "less -R -X"
 
 # Custom bin scripts
 set PATH $PATH $HOME/bin/
