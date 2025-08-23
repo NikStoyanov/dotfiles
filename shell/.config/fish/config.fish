@@ -12,6 +12,8 @@ set -U fish_user_paths /usr/local/sbin /usr/bin /bin ~/.locale/bin $HOME/go/bin
 
 set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
 
+pyenv init - fish | source
+
 fish_add_path (python3 -c "import site; print(site.USER_BASE)")/bin
 
 # Weather
@@ -85,3 +87,12 @@ setenv LESS_TERMCAP_se \e'[0m'           # end standout-mode
 setenv LESS_TERMCAP_so \e'[38;5;246m'    # begin standout-mode - info box
 setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
+
+# If I have machine specific anaconda config then set it
+if test -f ~/.config/fish/local/anaconda.fish
+    source ~/.config/fish/local/anaconda.fish
+end
+# If I have machine specific pipx config then set it
+if test -f ~/.config/fish/local/pipx.fish
+    source ~/.config/fish/local/pipx.fish
+end
